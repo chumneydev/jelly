@@ -20,6 +20,8 @@
 		"paths": {
 			"@dictionaries/*": ["src/dictionaries/*"],
 			"@guides/*": ["src/guides/*"],
+			"~build/*": ["src/build/*"],
+			"~lib/tasks/*": ["src/lib/tasks/*"],
 			"~lib/conversions/*": ["src/lib/conversions/*"],
 			"~lib/transforms/*": ["src/lib/transforms/*"],
 			"~lib/utils/*": ["src/lib/utils/*"],

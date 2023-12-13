@@ -4,7 +4,8 @@
 	"description": "A small css token generator for the jelly-ui framework",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"gen:guides": "tsx src/build/tidal.build.ts --guides"
 	},
 	"keywords": [],
 	"author": "Louis Stephens",
