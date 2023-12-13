@@ -9,7 +9,7 @@ export const createFileName = (name: string, ext: string, includeHyphen: boolean
 
 export const createFilePath = (type: string, format: string, category?: string): string => {
 	// * Use in production. Vite disables the root directory in development
-	const rootDirectory = path.join(__dirname, "../../dist/");
+	const rootDirectory = path.join(__dirname, "../../../dist/");
 	const distDirectory = path.join(rootDirectory, type, format, category ? category : "");
 
 	// * Use in production. Vite disables the root directory in development
