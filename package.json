@@ -1,0 +1,12 @@
+{
+	"name": "jelly",
+	"version": "0.0.1",
+	"description": "Jelly is a collection of internal tools and css framework to help build websites.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}
