@@ -1,0 +1,20 @@
+{
+	"name": "@jelly/tidal",
+	"version": "0.0.1",
+	"description": "A small css token generator for the jelly-ui framework",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "Louis Stephens",
+	"license": "ISC",
+	"devDependencies": {
+		"prettier": "^3.1.1",
+		"tsx": "^4.6.2"
+	},
+	"dependencies": {
+		"chalk": "^5.3.0",
+		"typescript": "^5.3.3"
+	}
+}
