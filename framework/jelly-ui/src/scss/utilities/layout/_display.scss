@@ -1,0 +1,7 @@
+@use "@jelly/tidal/dist/guides/scss/layout" as tidal_layout;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Gap
+@include mixins.mixin-create-basic-classes(tidal_layout.$layout, display, display);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_layout.$layout, display, display, tidal_misc.$miscellaneous);
