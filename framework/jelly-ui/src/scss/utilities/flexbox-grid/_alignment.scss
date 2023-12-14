@@ -1,0 +1,27 @@
+@use "@jelly/tidal/dist/guides/scss/flexbox-grid" as tidal_fg;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Justify
+
+// Info - Justify Content
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, justifyContent, justify-content);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, justifyContent, justify-content, tidal_misc.$miscellaneous);
+
+// Info - Justify Items
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, justifyItems, justify-items);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, justifyItems, justify-items, tidal_misc.$miscellaneous);
+
+// Info - Justify Self
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, justifySelf, justify-self);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, justifySelf, justify-self, tidal_misc.$miscellaneous);
+
+// Info - Align
+
+// Info - Align: Content
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, alignContent, align-content);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, alignContent, align-content, tidal_misc.$miscellaneous);
+
+// Info - Align: Items
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, alignItems, align-items);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, alignItems, align-items, tidal_misc.$miscellaneous);
