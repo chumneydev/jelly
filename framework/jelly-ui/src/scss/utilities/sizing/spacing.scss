@@ -1,0 +1,15 @@
+@use "@jelly/tidal/dist/guides/scss/sizing" as tidal_sizing;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Space Between X
+@include mixins.mixin-create-basic-classes(tidal_sizing.$sizing, spaceBetweenX, margin-left);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_sizing.$sizing, spaceBetweenX, margin-left, tidal_misc.$miscellaneous);
+
+// Info - Space Between Y
+@include mixins.mixin-create-basic-classes(tidal_sizing.$sizing, spaceBetweenY, margin-top);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_sizing.$sizing, spaceBetweenY, margin-top, tidal_misc.$miscellaneous);
+
+// Info - Max Width
+@include mixins.mixin-create-basic-classes(tidal_sizing.$sizing, maxWidth, max-width);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_sizing.$sizing, maxWidth, max-width, tidal_misc.$miscellaneous);
