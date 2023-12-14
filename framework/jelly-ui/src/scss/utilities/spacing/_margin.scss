@@ -1,0 +1,27 @@
+@use "@jelly/tidal/dist/guides/scss/spacing" as tidal_spacing;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Margin X
+@include mixins.mixin-create-basic-classes(tidal_spacing.$spacing, marginX, (margin-left, margin-right));
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_spacing.$spacing, marginX, (margin-left, margin-right), tidal_misc.$miscellaneous);
+
+// Info - Margin Y
+@include mixins.mixin-create-basic-classes(tidal_spacing.$spacing, marginY, (margin-top, margin-bottom));
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_spacing.$spacing, marginY, (margin-top, margin-bottom), tidal_misc.$miscellaneous);
+
+// Info - Margin Top
+@include mixins.mixin-create-basic-classes(tidal_spacing.$spacing, marginTop, margin-top);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_spacing.$spacing, marginTop, margin-top, tidal_misc.$miscellaneous);
+
+// Info - Margin Right
+@include mixins.mixin-create-basic-classes(tidal_spacing.$spacing, marginRight, margin-right);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_spacing.$spacing, marginRight, margin-right, tidal_misc.$miscellaneous);
+
+// Info - Margin Bottom
+@include mixins.mixin-create-basic-classes(tidal_spacing.$spacing, marginBottom, margin-bottom);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_spacing.$spacing, marginBottom, margin-bottom, tidal_misc.$miscellaneous);
+
+// Info - Margin Left
+@include mixins.mixin-create-basic-classes(tidal_spacing.$spacing, marginLeft, margin-left);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_spacing.$spacing, marginLeft, margin-left, tidal_misc.$miscellaneous);
