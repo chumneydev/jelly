@@ -1,0 +1,15 @@
+@use "@jelly/tidal/dist/guides/scss/sizing" as tidal_sizing;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Height
+@include mixins.mixin-create-basic-classes(tidal_sizing.$sizing, height, height);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_sizing.$sizing, height, height, tidal_misc.$miscellaneous);
+
+// Info - Min Height
+@include mixins.mixin-create-basic-classes(tidal_sizing.$sizing, minHeight, min-height);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_sizing.$sizing, minHeight, min-height, tidal_misc.$miscellaneous);
+
+// Info - Max Height
+@include mixins.mixin-create-basic-classes(tidal_sizing.$sizing, maxHeight, max-height);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_sizing.$sizing, maxHeight, max-height, tidal_misc.$miscellaneous);
