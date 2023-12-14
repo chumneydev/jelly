@@ -1,0 +1,7 @@
+@use "@jelly/tidal/dist/guides/scss/flexbox-grid" as tidal_fg;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Gap
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, order, order);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, order, order, tidal_misc.$miscellaneous);

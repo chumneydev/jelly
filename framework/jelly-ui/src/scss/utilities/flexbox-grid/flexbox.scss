@@ -1,0 +1,15 @@
+@use "@jelly/tidal/dist/guides/scss/flexbox-grid" as tidal_fg;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Flex: Direction
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, direction, flex-direction);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, direction, flex-direction, tidal_misc.$miscellaneous);
+
+// Info - Flex: Wrap
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, wrap, flex-wrap);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, wrap, flex-wrap, tidal_misc.$miscellaneous);
+
+// Info - Flex: Grow
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, grow, flex-grow);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, grow, flex-grow, tidal_misc.$miscellaneous);
