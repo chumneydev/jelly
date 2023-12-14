@@ -1,0 +1,49 @@
+@use "@jelly/tidal/dist/guides/scss/flexbox-grid" as tidal_fg;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Columns
+
+// Info - Grid: Template Columns
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, gridTemplateColumns, grid-template-columns);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, gridTemplateColumns, grid-template-columns, tidal_misc.$miscellaneous);
+
+// Info - Grid: Column Span
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, columnsSpan, grid-column);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, columnsSpan, grid-column, tidal_misc.$miscellaneous);
+
+// Info - Grid: Column Start
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, columnsStart, grid-column-start);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, columnsStart, grid-column-start, tidal_misc.$miscellaneous);
+
+// Info - Grid: Column End
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, columnsEnd, grid-column-end);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, columnsEnd, grid-column-end, tidal_misc.$miscellaneous);
+
+// Info - Rows
+
+// Info - Grid: Template Rows
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, gridTemplateRows, grid-template-rows);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, gridTemplateRows, grid-template-rows, tidal_misc.$miscellaneous);
+
+// Info - Grid: Row Span
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, rowsSpan, grid-row);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, rowsSpan, grid-row, tidal_misc.$miscellaneous);
+
+// Info - Grid: Row Start
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, rowsStart, grid-row-start);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, rowsStart, grid-row-start, tidal_misc.$miscellaneous);
+
+// Info - Grid: Row End
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, rowsEnd, grid-row-end);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, rowsEnd, grid-row-end, tidal_misc.$miscellaneous);
+
+// Info - Auto
+
+// Info - Grid: Auto Columns
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, autoColumns, grid-auto-columns);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, autoColumns, grid-auto-columns, tidal_misc.$miscellaneous);
+
+// Info - Grid: Auto Rows
+@include mixins.mixin-create-basic-classes(tidal_fg.$flexbox-grid, autoRows, grid-auto-rows);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_fg.$flexbox-grid, autoRows, grid-auto-rows, tidal_misc.$miscellaneous);
