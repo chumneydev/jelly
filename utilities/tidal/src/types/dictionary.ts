@@ -6,7 +6,7 @@ export interface DictionaryItem {
 }
 
 export interface Dictionary {
-	category: string;
+	category: Category;
 	name: string;
 	mapName: string;
 	description: string;

@@ -1,9 +1,11 @@
 export enum Category {
 	Animation = "Animation",
 	Colors = "Colors",
+	FlexboxGrid = "Flexbox-Grid",
 	Display = "Display",
 	Interactivity = "Interactivity",
 	Layout = "Layout",
+	Miscellaneous = "Miscellaneous",
 	Position = "Position",
 	Typography = "Typography",
 	Sizing = "Sizing",
