@@ -12,6 +12,7 @@
 		"@jelly/tidal": "workspace:*"
 	},
 	"devDependencies": {
+		"postcss-prefix-selector": "^1.16.0",
 		"sass": "^1.69.5",
 		"typescript": "^5.2.2",
 		"vite": "^5.0.8"
