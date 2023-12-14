@@ -1,0 +1,23 @@
+@use "@jelly/tidal/dist/guides/scss/typography" as tidal_typography;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Font Size
+@include mixins.mixin-create-basic-classes(tidal_typography.$typography, fontSize, font-size);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_typography.$typography, fontSize, font-size, tidal_misc.$miscellaneous);
+
+// Info - Font Weight
+@include mixins.mixin-create-basic-classes(tidal_typography.$typography, fontWeight, font-weight);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_typography.$typography, fontWeight, font-weight, tidal_misc.$miscellaneous);
+
+// Info - Font Style
+@include mixins.mixin-create-basic-classes(tidal_typography.$typography, fontStyle, font-style);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_typography.$typography, fontStyle, font-style, tidal_misc.$miscellaneous);
+
+// Info - Line Height
+@include mixins.mixin-create-basic-classes(tidal_typography.$typography, lineHeight, line-height);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_typography.$typography, lineHeight, line-height, tidal_misc.$miscellaneous);
+
+// Todo - Combine Font and Line Height ... maybe
+// Create a mixin that combines font and line height like mixins.mixin-create-basic-classes but keep the mixin generic so it can be used for other properties
+// @include mixins.mixin-create-basic-classes(tidal_typography.$typography, fontLineHeight, font-line-height);
