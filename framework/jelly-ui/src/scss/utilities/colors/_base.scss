@@ -1,0 +1,11 @@
+@use "@jelly/tidal/dist/guides/scss/colors" as tidal_colors;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Text colors
+@include mixins.mixin-create-basic-classes($map: tidal_colors.$colors, $key: baseTextColors, $properties: color);
+@include mixins.mixin-create-basic-classes-with-breakpoints($map: tidal_colors.$colors, $key: baseTextColors, $properties: color, $miscellaneous: tidal_misc.$miscellaneous);
+
+// Info - Background colors
+@include mixins.mixin-create-basic-classes($map: tidal_colors.$colors, $key: baseBackgroundColors, $properties: background-color);
+@include mixins.mixin-create-basic-classes-with-breakpoints($map: tidal_colors.$colors, $key: baseBackgroundColors, $properties: background-color, $miscellaneous: tidal_misc.$miscellaneous);
