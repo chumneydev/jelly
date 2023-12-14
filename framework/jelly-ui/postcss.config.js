@@ -8,6 +8,10 @@ export default {
 				if (filePath.match(/node_modules/)) {
 					return selector;
 				}
+				const annotation = rule.prev();
+				if (annotation && annotation.type === "comment" && annotation.text.trim() === "no-prefix") {
+					return selector;
+				}
 
 				if (selector.match(/^:(root|where|is)/)) {
 					return selector;
