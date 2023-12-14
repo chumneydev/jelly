@@ -1,0 +1,39 @@
+@mixin mixin-create-basic-classes($map, $key, $properties, $prefix: null) {
+	$typeMap: map-get($map, $key);
+	$classes: map-get($typeMap, classes);
+
+	@each $class, $value in $classes {
+		@if $prefix {
+			.#{$prefix}\:#{$class} {
+				@if type-of($properties) == "list" {
+					@each $property in $properties {
+						#{$property}: $value;
+					}
+				} @else {
+					#{$properties}: $value;
+				}
+			}
+		} @else {
+			.#{$class} {
+				@if type-of($properties) == "list" {
+					@each $property in $properties {
+						#{$property}: $value;
+					}
+				} @else {
+					#{$properties}: $value;
+				}
+			}
+		}
+	}
+}
+
+@mixin mixin-create-basic-classes-with-breakpoints($map, $key, $properties, $miscellaneous) {
+	$breakpointMap: map-get($miscellaneous, breakpoints);
+	$breakpointClasses: map-get($breakpointMap, classes);
+
+	@each $breakpoint, $value in $breakpointClasses {
+		@media (min-width: $value) {
+			@include mixin-create-basic-classes($map, $key, $properties, $breakpoint);
+		}
+	}
+}
