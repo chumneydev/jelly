@@ -9,17 +9,17 @@ export const acura: Dictionary = {
 	description: "Dictionary for acura colors",
 	properties: ["color", "background-color"],
 	dictionary: [
-		{ name: "audi-50", value: "#FAD0D0" },
-		{ name: "audi-100", value: "#F8BEBD" },
-		{ name: "audi-200", value: "#F49998" },
-		{ name: "audi-300", value: "#F07574" },
-		{ name: "audi-400", value: "#EC504F" },
-		{ name: "audi-500", value: "#E82C2A" },
-		{ name: "audi-600", value: "#C51715" },
-		{ name: "audi-700", value: "#921110" },
-		{ name: "audi-800", value: "#5F0B0A" },
-		{ name: "audi-900", value: "#2D0505" },
-		{ name: "audi-950", value: "#130202" },
+		{ name: "acura-50", value: "#FAD0D0" },
+		{ name: "acura-100", value: "#F8BEBD" },
+		{ name: "acura-200", value: "#F49998" },
+		{ name: "acura-300", value: "#F07574" },
+		{ name: "acura-400", value: "#EC504F" },
+		{ name: "acura-500", value: "#E82C2A" },
+		{ name: "acura-600", value: "#C51715" },
+		{ name: "acura-700", value: "#921110" },
+		{ name: "acura-800", value: "#5F0B0A" },
+		{ name: "acura-900", value: "#2D0505" },
+		{ name: "acura-950", value: "#130202" },
 	],
 };
 export const audi: Dictionary = {
@@ -552,7 +552,7 @@ export const brandsColors: Dictionary[] = [
 	volvo,
 ];
 
-export const brandsTextColors = {
+export const brandsTextColors: Dictionary = {
 	category: Category.Colors,
 	name: "Brands Text Colors",
 	mapName: "brandsTextColors",
@@ -561,7 +561,7 @@ export const brandsTextColors = {
 	dictionary: createPrefixedDictionary("text", brandsColors),
 };
 
-export const brandsBackgroundColors = {
+export const brandsBackgroundColors: Dictionary = {
 	category: Category.Colors,
 	name: "Brands Background Colors",
 	mapName: "brandsBackgroundColors",

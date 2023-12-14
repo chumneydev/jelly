@@ -182,7 +182,7 @@ export const violet: Dictionary = {
 
 export const baseColors = [black, white, slate, gray, red, orange, yellow, green, blue, violet];
 
-export const baseTextColors = {
+export const baseTextColors: Dictionary = {
 	category: Category.Colors,
 	name: "Base Text Colors",
 	mapName: "baseTextColors",
@@ -191,7 +191,7 @@ export const baseTextColors = {
 	dictionary: createPrefixedDictionary("text", baseColors),
 };
 
-export const baseBackgroundColors = {
+export const baseBackgroundColors: Dictionary = {
 	category: Category.Colors,
 	name: "Base Background Colors",
 	mapName: "baseBackgroundColors",
