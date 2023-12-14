@@ -1,0 +1,38 @@
+@use "@jelly/tidal/dist/guides/scss/layout" as tidal_layout;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+// Info - Position
+
+@include mixins.mixin-create-basic-classes(tidal_layout.$layout, position, position);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_layout.$layout, position, position, tidal_misc.$miscellaneous);
+
+// Info - Inset
+
+// Info - Inset
+@include mixins.mixin-create-basic-classes(tidal_layout.$layout, inset, inset);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_layout.$layout, inset, inset, tidal_misc.$miscellaneous);
+
+// Info - Inset: X
+@include mixins.mixin-create-basic-classes(tidal_layout.$layout, insetX, inset-x);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_layout.$layout, insetX, inset-x, tidal_misc.$miscellaneous);
+
+// Info - Inset: Y
+@include mixins.mixin-create-basic-classes(tidal_layout.$layout, insetY, inset-y);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_layout.$layout, insetY, inset-y, tidal_misc.$miscellaneous);
+
+// Info - Position: Top
+@include mixins.mixin-create-basic-classes(tidal_layout.$layout, top, top);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_layout.$layout, top, top, tidal_misc.$miscellaneous);
+
+// Info - Position: Right
+@include mixins.mixin-create-basic-classes(tidal_layout.$layout, right, right);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_layout.$layout, right, right, tidal_misc.$miscellaneous);
+
+// Info - Position: Bottom
+@include mixins.mixin-create-basic-classes(tidal_layout.$layout, bottom, bottom);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_layout.$layout, bottom, bottom, tidal_misc.$miscellaneous);
+
+// Info - Position: Left
+@include mixins.mixin-create-basic-classes(tidal_layout.$layout, left, left);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_layout.$layout, left, left, tidal_misc.$miscellaneous);
