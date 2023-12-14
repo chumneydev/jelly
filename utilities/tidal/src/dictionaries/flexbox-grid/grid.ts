@@ -4,7 +4,7 @@ import { Dictionary } from "~types/dictionary";
 export const gridTemplateColumns: Dictionary = {
 	name: "Template Columns",
 	category: Category.FlexboxGrid,
-	mapName: "templateColumns",
+	mapName: "gridTemplateColumns",
 	description: "The template-columns property specifies the number (and the widths) of columns in a grid layout.",
 	properties: ["grid-template-columns"],
 	dictionary: [
@@ -97,7 +97,7 @@ export const gridColumnsEnd: Dictionary = {
 export const gridTemplateRows: Dictionary = {
 	name: "Template Rows",
 	category: Category.FlexboxGrid,
-	mapName: "templateRows",
+	mapName: "gridTemplateRows",
 	description: "The template-rows property specifies the number (and the heights) of the rows in a grid layout.",
 	properties: ["grid-template-rows"],
 	dictionary: [
