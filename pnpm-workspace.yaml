@@ -1,3 +1,4 @@
 packages:
   - "framework/jelly-ui"
   - "utilities/tidal"
+  - "utilities/tidal-wave"
