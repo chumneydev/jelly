@@ -3,3 +3,9 @@ export interface Component {
 	base: Record<string, string>;
 	hover?: Record<string, string>;
 }
+
+export interface ComponentGroup {
+	name: string;
+	description: string;
+	components: Component[];
+}
