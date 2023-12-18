@@ -5,6 +5,7 @@ import flexboxGrid from "@jelly/tidal/dist/guides/ts/flexbox-grid";
 import spacing from "@jelly/tidal/dist/guides/ts/spacing";
 
 import { Component, ComponentGroup } from "~types/component";
+import createButtonComponents from "~lib/utils/createButtonComponents";
 
 const baseButton: Component = {
 	className: "jl-button",
@@ -19,62 +20,16 @@ const baseButton: Component = {
 	hover: {},
 };
 
-const baseButtons: Component[] = Object.keys(colors.baseBackgroundColors.classes)
-	.filter((color) => !color.includes("-") || color.includes("500"))
-	.map((color) => {
-		const colorName = color.replace("bg-", "");
-
-		let hoverColor;
-		if (!color.includes("-")) {
-			hoverColor = color;
-		} else {
-			hoverColor = color.replace("500", "700");
-		}
-
-		return {
-			className: `jl-button--${colorName.replace(/-\d+/, "")}`,
-			base: {
-				...baseButton.base,
-				backgroundColor: colors.baseBackgroundColors.classes[color as keyof typeof colors.baseBackgroundColors.classes],
-			},
-			hover: {
-				...baseButton.hover,
-				backgroundColor: colors.baseBackgroundColors.classes[hoverColor as keyof typeof colors.baseBackgroundColors.classes],
-			},
-		};
-	});
-
-const brandButtons: Component[] = Object.keys(colors.brandsBackgroundColors.classes)
-	.filter((color) => !color.includes("-") || color.includes("500"))
-	.map((color) => {
-		const colorName = color.replace("bg-", "");
-
-		let hoverColor;
-		if (!color.includes("-")) {
-			hoverColor = color;
-		} else {
-			hoverColor = color.replace("500", "700");
-		}
-
-		return {
-			className: `jl-button--${colorName.replace(/-\d+/, "")}`,
-			base: {
-				...baseButton.base,
-				backgroundColor: colors.brandsBackgroundColors.classes[color as keyof typeof colors.brandsBackgroundColors.classes],
-			},
-			hover: {
-				...baseButton.hover,
-				backgroundColor: colors.brandsBackgroundColors.classes[hoverColor as keyof typeof colors.brandsBackgroundColors.classes],
-			},
-		};
-	});
-
-const buttons: ComponentGroup = {
-	name: "Buttons",
+const simpleButtons: ComponentGroup = {
+	name: "Simple Buttons",
 	description: "Button components",
 	components: [],
 };
 
-buttons.components.push(...baseButtons, ...brandButtons);
+const baseButtons = createButtonComponents(colors.baseBackgroundColors.classes, baseButton);
+const brandButtons = createButtonComponents(colors.brandsBackgroundColors.classes, baseButton);
 
-export default buttons;
+simpleButtons.components.push(...baseButtons, ...brandButtons);
+// console.log(simpleButtons);
+
+export default simpleButtons;
