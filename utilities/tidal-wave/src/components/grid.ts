@@ -2,7 +2,7 @@
 import layout from "@jelly/tidal/dist/guides/ts/layout";
 import flexboxGrid from "@jelly/tidal/dist/guides/ts/flexbox-grid";
 
-import { Component } from "~types/component";
+import { Component, ComponentGroup } from "~types/component";
 
 const gridBase: Component = {
 	className: "jl-grid",
@@ -11,8 +11,6 @@ const gridBase: Component = {
 		gap: flexboxGrid.gap.classes["gap-4"],
 	},
 };
-
-const gridComponents: Component[] = [];
 
 const gridClasses = Object.keys(flexboxGrid.gridTemplateColumns.classes).map((grid) => {
 	const gridName = grid.replace("grid-cols-", "");
@@ -26,6 +24,12 @@ const gridClasses = Object.keys(flexboxGrid.gridTemplateColumns.classes).map((gr
 	};
 });
 
-gridComponents.push(...gridClasses);
+const gridComponents: ComponentGroup = {
+	name: "Grid",
+	description: "Grid components",
+	components: [],
+};
+
+gridComponents.components.push(...gridClasses);
 
 export default gridComponents;
