@@ -1,0 +1,4 @@
+@use "@jelly/tidal-wave/dist/guides/scss/buttons-simple" as waves_simple_buttons;
+@use "../abstracts/mixins" as mixins;
+
+@include mixins.mixin-create-components(waves_simple_buttons.$buttons-simple);
