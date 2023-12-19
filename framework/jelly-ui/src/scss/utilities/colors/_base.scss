@@ -3,9 +3,13 @@
 @use "../abstracts/mixins" as mixins;
 
 // Info - Text colors
-@include mixins.mixin-create-basic-classes($map: tidal_colors.$colors, $key: baseTextColors, $properties: color);
-@include mixins.mixin-create-basic-classes-with-breakpoints($map: tidal_colors.$colors, $key: baseTextColors, $properties: color, $miscellaneous: tidal_misc.$miscellaneous);
+@include mixins.mixin-create-basic-classes(tidal_colors.$colors, baseTextColors, color);
+@include mixins.mixin-create-basic-classes(tidal_colors.$colors, baseTextColors, color, null, hover);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_colors.$colors, baseTextColors, color, tidal_misc.$miscellaneous);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_colors.$colors, baseTextColors, color, tidal_misc.$miscellaneous, hover);
 
 // Info - Background colors
-@include mixins.mixin-create-basic-classes($map: tidal_colors.$colors, $key: baseBackgroundColors, $properties: background-color);
-@include mixins.mixin-create-basic-classes-with-breakpoints($map: tidal_colors.$colors, $key: baseBackgroundColors, $properties: background-color, $miscellaneous: tidal_misc.$miscellaneous);
+@include mixins.mixin-create-basic-classes(tidal_colors.$colors, baseBackgroundColors, background-color);
+@include mixins.mixin-create-basic-classes(tidal_colors.$colors, baseBackgroundColors, background-color, null, hover);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_colors.$colors, baseBackgroundColors, background-color, tidal_misc.$miscellaneous);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_colors.$colors, baseBackgroundColors, background-color, tidal_misc.$miscellaneous, hover);
