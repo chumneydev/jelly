@@ -13,6 +13,9 @@ importers:
       '@jelly/tidal':
         specifier: workspace:*
         version: link:../../utilities/tidal
+      '@jelly/tidal-wave':
+        specifier: workspace:*
+        version: link:../../utilities/tidal-wave
     devDependencies:
       postcss-prefix-selector:
         specifier: ^1.16.0

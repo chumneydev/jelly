@@ -9,7 +9,8 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@jelly/tidal": "workspace:*"
+		"@jelly/tidal": "workspace:*",
+		"@jelly/tidal-wave": "workspace:*"
 	},
 	"devDependencies": {
 		"postcss-prefix-selector": "^1.16.0",
