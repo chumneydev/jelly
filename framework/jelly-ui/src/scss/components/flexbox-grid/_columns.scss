@@ -1,0 +1,6 @@
+@use "@jelly/tidal-wave/dist/guides/scss/grid" as waves_flexbox_grid;
+@use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
+@use "../abstracts/mixins" as mixins;
+
+@include mixins.mixin-create-components(waves_flexbox_grid.$grid);
+@include mixins.mixin-create-components-with-breakpoints(waves_flexbox_grid.$grid, tidal_misc.$miscellaneous);

@@ -1,39 +1,35 @@
-@mixin mixin-create-basic-classes($map, $key, $properties, $prefix: null) {
+@mixin mixin-create-basic-classes($map, $key, $properties, $prefix: null, $pseudo: null) {
 	$typeMap: map-get($map, $key);
 	$classes: map-get($typeMap, classes);
 
 	@each $class, $value in $classes {
-		@if $prefix {
-			.#{$prefix}\:#{$class} {
-				@if type-of($properties) == "list" {
-					@each $property in $properties {
-						#{$property}: $value;
-					}
-				} @else {
-					#{$properties}: $value;
-				}
+		$baseClass: if($prefix, ".#{$prefix}\:#{$class}", "") + "#{$class}";
+
+		@include create-properties($class, $properties, $value, $prefix, $pseudo);
+	}
+}
+
+@mixin create-properties($class, $properties, $value, $prefix: null, $pseudo: null) {
+	$selector: if($prefix and $pseudo, ".#{$prefix}\\:#{$pseudo}\\:#{$class}:#{$pseudo}", if($prefix, ".#{$prefix}\\:#{$class}", if($pseudo, ".#{$pseudo}\\:#{$class}:#{$pseudo}", ".#{$class}")));
+
+	#{$selector} {
+		@if type-of($properties) == "list" {
+			@each $property in $properties {
+				#{$property}: $value;
 			}
 		} @else {
-			.#{$class} {
-				@if type-of($properties) == "list" {
-					@each $property in $properties {
-						#{$property}: $value;
-					}
-				} @else {
-					#{$properties}: $value;
-				}
-			}
+			#{$properties}: $value;
 		}
 	}
 }
 
-@mixin mixin-create-basic-classes-with-breakpoints($map, $key, $properties, $miscellaneous) {
+@mixin mixin-create-basic-classes-with-breakpoints($map, $key, $properties, $miscellaneous, $pseudo: null) {
 	$breakpointMap: map-get($miscellaneous, breakpoints);
 	$breakpointClasses: map-get($breakpointMap, classes);
 
 	@each $breakpoint, $value in $breakpointClasses {
 		@media (min-width: $value) {
-			@include mixin-create-basic-classes($map, $key, $properties, $breakpoint);
+			@include mixin-create-basic-classes($map, $key, $properties, $breakpoint, $pseudo);
 		}
 	}
 }

@@ -1,3 +1,4 @@
+import camelCase from "~lib/utils/camelCase";
 import { ComponentGroup } from "~types/component";
 
 const createInterface = (name: string, base: Record<string, string>, hover?: Record<string, string>, hoverTypes?: Record<string, string>): string => {
@@ -37,8 +38,10 @@ const createComponent = (name: string, base: Record<string, string>, hover?: Rec
 };
 
 const transformTypescript = (group: ComponentGroup): string => {
-	let tsInterfaces = `export interface ${group.name}Components {\n`;
-	let tsComponentGroup = `export const ${group.name}: ${group.name}Components = {\n`;
+	const interfaceName = group.name.replace(/\s/g, "");
+	const constName = camelCase(group.name);
+	let tsInterfaces = `export interface ${interfaceName}Components {\n`;
+	let tsComponentGroup = `export const ${constName}: ${interfaceName}Components = {\n`;
 
 	group.components.forEach((component) => {
 		tsInterfaces += createInterface(component.className, component.base, component.hover);

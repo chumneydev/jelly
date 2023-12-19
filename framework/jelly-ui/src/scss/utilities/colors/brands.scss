@@ -2,10 +2,17 @@
 @use "@jelly/tidal/dist/guides/scss/_miscellaneous" as tidal_misc;
 @use "../abstracts/mixins" as mixins;
 
+// brandsTextColors
+// brandsBackgroundColors
+
 // Info - Text colors
-@include mixins.mixin-create-basic-classes($map: tidal_colors.$colors, $key: brandsTextColors, $properties: color);
-@include mixins.mixin-create-basic-classes-with-breakpoints($map: tidal_colors.$colors, $key: brandsTextColors, $properties: color, $miscellaneous: tidal_misc.$miscellaneous);
+@include mixins.mixin-create-basic-classes(tidal_colors.$colors, brandsTextColors, color);
+@include mixins.mixin-create-basic-classes(tidal_colors.$colors, brandsTextColors, color, null, hover);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_colors.$colors, brandsTextColors, color, tidal_misc.$miscellaneous);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_colors.$colors, brandsTextColors, color, tidal_misc.$miscellaneous, hover);
 
 // Info - Background colors
-@include mixins.mixin-create-basic-classes($map: tidal_colors.$colors, $key: brandsBackgroundColors, $properties: background-color);
-@include mixins.mixin-create-basic-classes-with-breakpoints($map: tidal_colors.$colors, $key: brandsBackgroundColors, $properties: background-color, $miscellaneous: tidal_misc.$miscellaneous);
+@include mixins.mixin-create-basic-classes(tidal_colors.$colors, brandsBackgroundColors, background-color);
+@include mixins.mixin-create-basic-classes(tidal_colors.$colors, brandsBackgroundColors, background-color, null, hover);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_colors.$colors, brandsBackgroundColors, background-color, tidal_misc.$miscellaneous);
+@include mixins.mixin-create-basic-classes-with-breakpoints(tidal_colors.$colors, brandsBackgroundColors, background-color, tidal_misc.$miscellaneous, hover);

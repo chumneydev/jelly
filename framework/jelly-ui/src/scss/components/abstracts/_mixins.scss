@@ -1,0 +1,34 @@
+@mixin mixin-create-components($map, $prefix: null) {
+	@each $class, $styles in $map {
+		$baseClass: if($prefix, ".#{$prefix}\\:#{$class}", ".#{$class}");
+
+		#{$baseClass} {
+			@each $state, $properties in $styles {
+				@if $state == "base" {
+					@include create-properties($properties);
+				} @else if $state == "hover" {
+					&:hover {
+						@include create-properties($properties);
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin create-properties($properties) {
+	@each $property, $value in $properties {
+		#{$property}: $value;
+	}
+}
+
+@mixin mixin-create-components-with-breakpoints($map, $miscellaneous) {
+	$breakpointMap: map-get($miscellaneous, breakpoints);
+	$breakpointClasses: map-get($breakpointMap, classes);
+
+	@each $breakpoint, $value in $breakpointClasses {
+		@media (min-width: $value) {
+			@include mixin-create-components($map, $breakpoint);
+		}
+	}
+}
