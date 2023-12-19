@@ -32,9 +32,9 @@ const gridComponents: ComponentGroup = {
 		flexboxGrid.gridTemplateColumns.classes,
 		gridBase,
 		"jl-grid-",
-		(classKey) => classKey,
-		(className) => ({
-			base: { gridTemplateColumns: flexboxGrid.gridTemplateColumns.classes[className as keyof typeof flexboxGrid.gridTemplateColumns.classes] },
+		(classKey) => classKey.replace("grid-cols-", ""),
+		(_, originalClassName) => ({
+			base: { gridTemplateColumns: flexboxGrid.gridTemplateColumns.classes[originalClassName as keyof typeof flexboxGrid.gridTemplateColumns.classes] },
 		}),
 	),
 };
