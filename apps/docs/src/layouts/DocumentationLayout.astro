@@ -1,0 +1,64 @@
+---
+import Header from "@components/Common/Headers/Header.astro";
+import SidebarNavigation from "@components/Documentation/Navigation/SidebarNavigation.astro";
+import WhatsOnThisPage from "@components/Documentation/Navigation/WhatsOnThisPage.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-full">
+    <Header />
+    <main class="max-w-8xl grid-cols-docs-sm lg:grid-cols-docs-md mx-auto grid h-full">
+      <SidebarNavigation />
+      <article class="px-14 py-12">
+        <slot />
+      </article>
+      <WhatsOnThisPage />
+    </main>
+  </body>
+</html>
+<style is:global>
+  @font-face {
+    font-family: "Geist";
+    src:
+      url("/fonts/Geist/Geist-Thin.woff2") format("woff2"),
+      url("/fonts/Geist/Geist-Thin.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Geist";
+    src:
+      url("/fonts/Geist/Geist-Regular.woff2") format("woff2"),
+      url("/fonts/Geist/Geist-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Geist";
+    src:
+      url("/fonts/Geist/Geist-Bold.woff2") format("woff2"),
+      url("/fonts/Geist/Geist-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
