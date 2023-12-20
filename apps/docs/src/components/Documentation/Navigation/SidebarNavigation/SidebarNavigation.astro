@@ -1,0 +1,18 @@
+---
+import SwitchNavigationTypes from "@components/Documentation/Navigation/SidebarNavigation/SwitchNavigationTypes";
+import { getCategoriesWithDocsByType } from "~utils/contentCollections";
+interface Props {}
+
+const {} = Astro.props;
+
+const utilities = await getCategoriesWithDocsByType("utilities");
+const components = await getCategoriesWithDocsByType("components");
+---
+
+<aside class="relative pl-4 xl:p-0">
+  <SwitchNavigationTypes utilities={utilities} components={components} client:only="preact" />
+
+  <!-- <div class="sticky top-24 w-64 rounded-md border-2 border-black bg-orange-400 px-8 py-4">
+    <SwitchNavigationTypes utilities={utilities} components={components} client:only="preact" />
+  </div> -->
+</aside>
