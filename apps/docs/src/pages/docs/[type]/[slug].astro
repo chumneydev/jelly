@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import { stripFolderFromSlug } from "~utils/stripFolderFromSlug";
+
+export const getStaticPaths = async () => {
+  const docs = await getCollection("docs");
+  const categories = await getCollection("categories");
+
+  return docs.map((doc) => {
+    const category = categories.find((category) => category.slug === doc.data.category.slug)!;
+    const params = {
+      type: category.data.type,
+      slug: stripFolderFromSlug(doc.slug, 1),
+    };
+    return {
+      params,
+      props: {
+        doc,
+      },
+    };
+  });
+};
+
+const { doc } = Astro.props;
+const { Content, headings } = await doc.render();
+---
+
+<h1>{doc.slug}</h1>
+<Content />
