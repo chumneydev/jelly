@@ -1,5 +1,6 @@
 ---
-import { getCollection } from "astro:content";
+import DocumentationLayout from "@layouts/DocumentationLayout.astro";
+import { getCollection, getEntry } from "astro:content";
 import { stripFolderFromSlug } from "~utils/stripFolderFromSlug";
 
 export const getStaticPaths = async () => {
@@ -23,7 +24,9 @@ export const getStaticPaths = async () => {
 
 const { doc } = Astro.props;
 const { Content, headings } = await doc.render();
+const category = await getEntry(doc.data.category);
 ---
 
-<h1>{doc.slug}</h1>
-<Content />
+<DocumentationLayout title={doc.data.title}>
+  <Content />
+</DocumentationLayout>
