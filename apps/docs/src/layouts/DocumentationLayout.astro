@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 import Header from "@components/Common/Headers/Header.astro";
 import SidebarNavigation from "@components/Documentation/Navigation/SidebarNavigation/UI/SidebarNavigation.astro";
 import WhatsOnThisPage from "@components/Documentation/Navigation/WhatsOnThisPage.astro";
@@ -19,6 +21,7 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body class="min-h-full">
     <Header />
@@ -29,44 +32,44 @@ const { title } = Astro.props;
       </article>
       <WhatsOnThisPage />
     </main>
+    <style is:global>
+      @font-face {
+        font-family: "Geist";
+        src:
+          url("/fonts/Geist/Geist-Thin.woff2") format("woff2"),
+          url("/fonts/Geist/Geist-Thin.woff") format("woff");
+        font-weight: 100;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src:
+          url("/fonts/Geist/Geist-Regular.woff2") format("woff2"),
+          url("/fonts/Geist/Geist-Regular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src:
+          url("/fonts/Geist/Geist-Bold.woff2") format("woff2"),
+          url("/fonts/Geist/Geist-Bold.woff") format("woff");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    <script is:inline>
+      if (localStorage.getItem("docsTheme") === "dark" || (!("docsTheme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </body>
 </html>
-<style is:global>
-  @font-face {
-    font-family: "Geist";
-    src:
-      url("/fonts/Geist/Geist-Thin.woff2") format("woff2"),
-      url("/fonts/Geist/Geist-Thin.woff") format("woff");
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Geist";
-    src:
-      url("/fonts/Geist/Geist-Regular.woff2") format("woff2"),
-      url("/fonts/Geist/Geist-Regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Geist";
-    src:
-      url("/fonts/Geist/Geist-Bold.woff2") format("woff2"),
-      url("/fonts/Geist/Geist-Bold.woff") format("woff");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-</style>
-
-<script is:inline>
-  if (localStorage.getItem("docsTheme") === "dark" || (!("docsTheme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
-</script>
