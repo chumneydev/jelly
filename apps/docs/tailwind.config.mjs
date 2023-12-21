@@ -15,6 +15,11 @@ export default {
       maxWidth: {
         "8xl": "90rem",
       },
+      boxShadow: {
+        "neu-sm": "1px 1px 0 0px rgba(0,0,0,1)",
+        "neu-md": "2px 2px 0 0px rgba(0,0,0,1)",
+        "neu-lg": "4px 4px 0 0px rgba(0,0,0,1)",
+      },
       gridTemplateColumns: {
         "docs-sm": "auto 1fr",
         "docs-md": "auto 1fr auto",
