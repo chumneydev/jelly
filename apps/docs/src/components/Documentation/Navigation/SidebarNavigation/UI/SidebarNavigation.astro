@@ -1,0 +1,14 @@
+---
+import SidebarNavigationManager from "@components/Documentation/Navigation/SidebarNavigation/State/SidebarNavigationManager";
+import { getCategoriesWithDocsByType } from "~utils/contentCollections";
+interface Props {}
+
+const {} = Astro.props;
+
+const utilities = await getCategoriesWithDocsByType("utilities");
+const components = await getCategoriesWithDocsByType("components");
+---
+
+<aside class="relative min-h-[calc(100vh-3.5rem)] pl-4 xl:p-0">
+  <SidebarNavigationManager utilities={utilities} components={components} currentPath={Astro.url.pathname} client:only="preact" />
+</aside>
