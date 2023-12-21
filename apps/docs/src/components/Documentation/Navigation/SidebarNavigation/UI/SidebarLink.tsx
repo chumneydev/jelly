@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 
 import type { CollectionEntry, CollectionKey } from "astro:content";
 import getLinkDetails from "~utils/getLinkDetails";
+import useSidebarStore from "~stores/sidebarStore";
 
 const currentLinkVariant = cva({
   base: "z-10 flex h-full w-full justify-center rounded-md border-2 border-black py-2 text-sm transition-all duration-200 ease-in-out",
@@ -21,18 +22,16 @@ interface SidebarLinkProps {
   collection: CollectionKey;
   type: string;
   category: string;
-  setSelectedType: (type: CollectionEntry<"categories">["data"]["type"]) => void;
-  setOpenCategory: (category: string) => void;
 }
 
-const SidebarLink = ({ title, url, collection, currentPath, type, setOpenCategory, category, setSelectedType }: SidebarLinkProps) => {
+const SidebarLink = ({ title, url, collection, currentPath, type, category }: SidebarLinkProps) => {
+  const { setSelectedType, setOpenCategory } = useSidebarStore();
+
   const { friendlyUrl, fullUrl, isActive } = getLinkDetails(url, collection, currentPath, type);
   // jellyDocsCategory
   const handleClick = () => {
     setOpenCategory(category);
     setSelectedType(type as "utilities" | "components");
-    sessionStorage.setItem("jellyDocsCategory", category);
-    sessionStorage.setItem("selectedType", type);
   };
 
   return (

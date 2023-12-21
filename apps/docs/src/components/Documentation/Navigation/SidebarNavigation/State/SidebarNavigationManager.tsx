@@ -6,6 +6,7 @@ import type { CategoryWithDocs } from "~utils/contentCollections";
 
 import TypeSwitcher from "@components/Documentation/Navigation/SidebarNavigation/UI/TypeSwitcher";
 import SidebarLink from "@components/Documentation/Navigation/SidebarNavigation/UI/SidebarLink";
+import useSidebarStore from "~stores/sidebarStore";
 
 interface SidebarNavigationManagerProps {
   utilities: CategoryWithDocs[];
@@ -14,27 +15,8 @@ interface SidebarNavigationManagerProps {
 }
 
 const SidebarNavigationManager = ({ utilities, components, currentPath }: SidebarNavigationManagerProps) => {
-  const [selectedType, setSelectedType] = useState<CollectionEntry<"categories">["data"]["type"]>((sessionStorage.getItem("selectedType") as "utilities" | "components") || "utilities");
+  const { selectedType, setSelectedType, openCategory, setOpenCategory, handleTypeChange, handleOpenCategory } = useSidebarStore();
   const categories = selectedType === "utilities" ? utilities : components;
-
-  const [openCategory, setOpenCategory] = useState<string | null>(sessionStorage.getItem("jellyDocsCategory") || categories[0].data.title);
-
-  useEffect(() => {
-    if (openCategory) {
-      sessionStorage.setItem("jellyDocsCategory", openCategory);
-    }
-  }, [openCategory]);
-
-  console.log(selectedType, openCategory);
-
-  const handleTypeChange = (type: CollectionEntry<"categories">["data"]["type"]) => {
-    setSelectedType(type);
-    sessionStorage.setItem("selectedType", type);
-  };
-
-  const handleOpenCategory = (category: string) => {
-    setOpenCategory(openCategory === category ? null : category);
-  };
 
   return (
     <div class="sticky top-24">
@@ -65,16 +47,7 @@ const SidebarNavigationManager = ({ utilities, components, currentPath }: Sideba
             >
               {/* <ul class={""}> */}
               {category.docs.map((doc) => (
-                <SidebarLink
-                  title={doc.data.title}
-                  url={doc.slug}
-                  currentPath={currentPath}
-                  collection="docs"
-                  type={category.data.type}
-                  category={category.data.title}
-                  setOpenCategory={setOpenCategory}
-                  setSelectedType={setSelectedType}
-                />
+                <SidebarLink title={doc.data.title} url={doc.slug} currentPath={currentPath} collection="docs" type={category.data.type} category={category.data.title} />
               ))}
             </ul>
           </div>

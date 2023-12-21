@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 
 import type { CollectionEntry } from "astro:content";
 import { useState, useEffect } from "preact/hooks";
+import useSidebarStore from "~stores/sidebarStore";
 
 const currentTypeButton = cva({
   base: "z-10 flex h-full w-full justify-center rounded-md border-2 border-black py-2 text-sm transition-all duration-200 ease-in-out",
@@ -14,31 +15,31 @@ const currentTypeButton = cva({
   },
 });
 
-interface TypeSwitcherProps {
-  selectedType: CollectionEntry<"categories">["data"]["type"];
-  handleTypeChange: (type: CollectionEntry<"categories">["data"]["type"]) => void;
-}
+// interface TypeSwitcherProps {
+//   selectedType: CollectionEntry<"categories">["data"]["type"];
+// }
+interface TypeSwitcherProps {}
 
-const TypeSwitcher = ({ selectedType, handleTypeChange }: TypeSwitcherProps) => {
-  const [currentlyActive, setCurrentlyActive] = useState<CollectionEntry<"categories">["data"]["type"] | null>("utilities");
+const TypeSwitcher = ({}: TypeSwitcherProps) => {
+  const { selectedType, setSelectedType, handleTypeChange } = useSidebarStore();
 
   useEffect(() => {
-    setCurrentlyActive(selectedType);
+    setSelectedType(selectedType);
   }, [selectedType]);
 
   const handleClick = (type: CollectionEntry<"categories">["data"]["type"]) => {
     handleTypeChange(type);
-    setCurrentlyActive(type);
+    setSelectedType(type);
   };
 
   return (
     <>
       <button class="group relative flex w-full" onClick={() => handleClick("utilities")}>
-        <div class={clsx([currentlyActive === "utilities" ? currentTypeButton({ currentlyActive: true }) : currentTypeButton({ currentlyActive: false })])}>Utilities</div>
+        <div class={clsx([selectedType === "utilities" ? currentTypeButton({ currentlyActive: true }) : currentTypeButton({ currentlyActive: false })])}>Utilities</div>
         <div class="absolute inset-0 w-full rounded-md bg-black"></div>
       </button>
       <button class="group relative flex w-full" onClick={() => handleClick("components")}>
-        <div class={clsx([currentlyActive === "components" ? currentTypeButton({ currentlyActive: true }) : currentTypeButton({ currentlyActive: false })])}>Components</div>
+        <div class={clsx([selectedType === "components" ? currentTypeButton({ currentlyActive: true }) : currentTypeButton({ currentlyActive: false })])}>Components</div>
         <div class="absolute inset-0 w-full rounded-md bg-black"></div>
       </button>
     </>

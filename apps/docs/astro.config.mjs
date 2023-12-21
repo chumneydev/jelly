@@ -9,5 +9,5 @@ export default defineConfig({
     "/": "/docs/utilities/getting-started",
     "/docs": "/docs/utilities/getting-started",
   },
-  integrations: [tailwind(), preact()],
+  integrations: [tailwind(), preact({ compat: true })],
 });
