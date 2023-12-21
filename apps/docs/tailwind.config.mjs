@@ -24,6 +24,10 @@ export default {
         "docs-sm": "auto 1fr",
         "docs-md": "auto 1fr auto",
       },
+      transitionProperty: {
+        height: "height",
+        "max-height": "max-height",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

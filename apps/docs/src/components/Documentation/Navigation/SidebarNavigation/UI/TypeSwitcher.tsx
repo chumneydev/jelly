@@ -2,7 +2,7 @@ import { cva } from "cva";
 import { clsx } from "clsx";
 
 import type { CollectionEntry } from "astro:content";
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 
 const currentTypeButton = cva({
   base: "z-10 flex h-full w-full justify-center rounded-md border-2 border-black py-2 text-sm transition-all duration-200 ease-in-out",
@@ -21,6 +21,10 @@ interface TypeSwitcherProps {
 
 const TypeSwitcher = ({ selectedType, handleTypeChange }: TypeSwitcherProps) => {
   const [currentlyActive, setCurrentlyActive] = useState<CollectionEntry<"categories">["data"]["type"] | null>("utilities");
+
+  useEffect(() => {
+    setCurrentlyActive(selectedType);
+  }, [selectedType]);
 
   const handleClick = (type: CollectionEntry<"categories">["data"]["type"]) => {
     handleTypeChange(type);
