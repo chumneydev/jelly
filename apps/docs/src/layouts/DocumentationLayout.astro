@@ -1,15 +1,18 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 
+import type { MarkdownHeading } from "astro";
+
 import Header from "@components/Common/Headers/Header.astro";
 import SidebarNavigation from "@components/Documentation/Navigation/SidebarNavigation/SidebarNavigation.astro";
-import WhatsOnThisPage from "@components/Documentation/Navigation/WhatsOnThisPage.astro";
+import WhatsOnThisPage from "@components/Documentation/Navigation/WhatsOnThisPage/WhatsOnThisPage";
 
 interface Props {
   title: string;
+  headings: MarkdownHeading[];
 }
 
-const { title } = Astro.props;
+const { title, headings } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,14 +26,16 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="min-h-full">
+  <body class="min-h-full dark:bg-teal-800">
     <Header />
     <main class="mx-auto grid h-full max-w-8xl grid-cols-docs-sm lg:grid-cols-docs-md">
       <SidebarNavigation />
       <article class="px-14 py-12">
-        <slot />
+        <div class="lg:prose-md prose max-w-none dark:prose-invert">
+          <slot />
+        </div>
       </article>
-      <WhatsOnThisPage />
+      <WhatsOnThisPage headings={headings} client:only="preact" />
     </main>
     <style is:global>
       @font-face {

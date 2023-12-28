@@ -27,6 +27,6 @@ const { Content, headings } = await doc.render();
 const category = await getEntry(doc.data.category);
 ---
 
-<DocumentationLayout title={doc.data.title}>
+<DocumentationLayout title={doc.data.title} headings={headings}>
   <Content />
 </DocumentationLayout>
