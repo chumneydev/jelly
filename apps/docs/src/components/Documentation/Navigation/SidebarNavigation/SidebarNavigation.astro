@@ -1,6 +1,8 @@
 ---
-import SidebarNavigationManager from "@components/Documentation/Navigation/SidebarNavigation/State/SidebarNavigationManager";
 import { getCategoriesWithDocsByType } from "~utils/contentCollections";
+
+import TypeSwitcher from "@components/Documentation/Navigation/SidebarNavigation/TypeSwitcher";
+
 interface Props {}
 
 const {} = Astro.props;
@@ -10,5 +12,7 @@ const components = await getCategoriesWithDocsByType("components");
 ---
 
 <aside class="relative min-h-[calc(100vh-3.5rem)] pl-4 xl:p-0">
-  <SidebarNavigationManager utilities={utilities} components={components} currentPath={Astro.url.pathname} client:only="preact" />
+  <div class="sticky top-24 w-64">
+    <TypeSwitcher client:only="preact" />
+  </div>
 </aside>
