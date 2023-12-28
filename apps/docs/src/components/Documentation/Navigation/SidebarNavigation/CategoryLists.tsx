@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 import type { CategoryWithDocs } from "~utils/contentCollections";
 
 import useSidebarStore from "~stores/sidebarStore";
+import CategoryHeading from "@components/Documentation/Navigation/SidebarNavigation/CategoryHeading";
 
 interface CategoryListsProps {
   utilities: CategoryWithDocs[];
@@ -16,23 +17,13 @@ const CategoryLists = ({ utilities, components, currentPath }: CategoryListsProp
   const categories = selectedType === "utilities" ? utilities : components;
 
   return (
-    <nav>
+    <nav class="space-y-4 rounded-md border-2 border-black bg-orange-400 p-4">
       {categories.map((category) => (
         <div class="">
+          <CategoryHeading title={category.data.title} />
           <ul>
             {category.docs.map((doc) => (
-              <li>
-                <a
-                  href={doc.slug}
-                  class={clsx([
-                    currentPath === doc.slug
-                      ? "bg-yellow-400 font-semibold hover:cursor-default"
-                      : "-translate-x-1 -translate-y-1 bg-orange-300 hover:translate-x-0 hover:translate-y-0 hover:bg-yellow-400 hover:font-semibold",
-                  ])}
-                >
-                  {doc.data.title}
-                </a>
-              </li>
+              <li></li>
             ))}
           </ul>
         </div>
