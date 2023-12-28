@@ -1,3 +1,5 @@
+import { useEffect } from "preact/hooks";
+
 import { cva } from "cva";
 import { clsx } from "clsx";
 
@@ -25,10 +27,10 @@ interface SidebarLinkProps {
 }
 
 const SidebarLink = ({ title, url, collection, currentPath, type, category }: SidebarLinkProps) => {
-  const { setSelectedType, setOpenCategory } = useSidebarStore();
+  const { setSelectedType, setOpenCategory, handleOpenCategory } = useSidebarStore();
 
-  const { friendlyUrl, fullUrl, isActive } = getLinkDetails(url, collection, currentPath, type);
-  // jellyDocsCategory
+  const baseUrl = import.meta.env.BASE_URL;
+  const { friendlyUrl, fullUrl, isActive } = getLinkDetails(url, collection, currentPath, type, baseUrl); // jellyDocsCategory
   const handleClick = () => {
     setOpenCategory(category);
     setSelectedType(type as "utilities" | "components");
