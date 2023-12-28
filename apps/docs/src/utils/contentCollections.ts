@@ -14,3 +14,17 @@ export const getCategoriesWithDocsByType = async (type: string): Promise<Categor
     };
   });
 };
+
+export const getPreviousAndNextDocs = async (currentSlug: string, type: string) => {
+  const categories = await getCategoriesWithDocsByType(type);
+  console.log(categories);
+
+  const allDocs = categories.flatMap((category) => category.docs);
+
+  const currentIndex = allDocs.findIndex((doc) => doc.slug === currentSlug);
+
+  const previousDoc = currentIndex > 0 ? allDocs[currentIndex - 1] : null;
+  const nextDoc = currentIndex < allDocs.length - 1 ? allDocs[currentIndex + 1] : null;
+
+  return { previousDoc, nextDoc };
+};
