@@ -15,9 +15,6 @@ const currentTypeButton = cva({
   },
 });
 
-// interface TypeSwitcherProps {
-//   selectedType: CollectionEntry<"categories">["data"]["type"];
-// }
 interface TypeSwitcherProps {}
 
 const TypeSwitcher = ({}: TypeSwitcherProps) => {
@@ -33,7 +30,7 @@ const TypeSwitcher = ({}: TypeSwitcherProps) => {
   };
 
   return (
-    <>
+    <div class="mb-4 grid w-full grid-cols-1 gap-4 md:grid-cols-2">
       <button class="group relative flex w-full" onClick={() => handleClick("utilities")}>
         <div class={clsx([selectedType === "utilities" ? currentTypeButton({ currentlyActive: true }) : currentTypeButton({ currentlyActive: false })])}>Utilities</div>
         <div class="absolute inset-0 w-full rounded-md bg-black"></div>
@@ -42,7 +39,7 @@ const TypeSwitcher = ({}: TypeSwitcherProps) => {
         <div class={clsx([selectedType === "components" ? currentTypeButton({ currentlyActive: true }) : currentTypeButton({ currentlyActive: false })])}>Components</div>
         <div class="absolute inset-0 w-full rounded-md bg-black"></div>
       </button>
-    </>
+    </div>
   );
 };
 export default TypeSwitcher;

@@ -14,7 +14,7 @@ export const useSidebarStore = create<SidebarState>(
   persist(
     (set, get) => ({
       selectedType: "utilities",
-      openCategory: null,
+      openCategory: "Getting Started",
       setSelectedType: (type: "utilities" | "components") => set({ selectedType: type }),
       setOpenCategory: (category: string | null) => set({ openCategory: category }),
       handleTypeChange: (type: "utilities" | "components") => set({ selectedType: type }),

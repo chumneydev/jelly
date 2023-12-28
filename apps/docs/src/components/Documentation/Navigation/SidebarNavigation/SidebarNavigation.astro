@@ -1,0 +1,20 @@
+---
+import { getCategoriesWithDocsByType } from "~utils/contentCollections";
+
+import TypeSwitcher from "@components/Documentation/Navigation/SidebarNavigation/TypeSwitcher";
+import CategoryLists from "@components/Documentation/Navigation/SidebarNavigation/CategoryLists";
+
+interface Props {}
+
+const {} = Astro.props;
+
+const utilities = await getCategoriesWithDocsByType("utilities");
+const components = await getCategoriesWithDocsByType("components");
+---
+
+<aside class="relative min-h-[calc(100vh-3.5rem)] pl-4 xl:p-0">
+  <div class="sticky top-24 w-64">
+    <TypeSwitcher client:only="preact" />
+    <CategoryLists utilities={utilities} components={components} currentPath={Astro.url.pathname} client:only="preact" />
+  </div>
+</aside>
