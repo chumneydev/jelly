@@ -30,11 +30,14 @@ const SidebarLink = ({ title, url, collection, currentPath, type, category }: Si
   const { setSelectedType, setOpenCategory, handleOpenCategory } = useSidebarStore();
 
   const baseUrl = import.meta.env.BASE_URL;
+
   const { friendlyUrl, fullUrl, isActive } = getLinkDetails(url, collection, currentPath, type, baseUrl); // jellyDocsCategory
   const handleClick = () => {
     setOpenCategory(category);
     setSelectedType(type as "utilities" | "components");
   };
+
+  console.log({ currentPath, fullUrl, isActive });
 
   return (
     <a class="group relative flex w-full" href={fullUrl} onClick={handleClick}>
