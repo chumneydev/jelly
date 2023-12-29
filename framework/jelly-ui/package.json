@@ -1,21 +1,28 @@
 {
 	"name": "jelly-ui",
-	"private": true,
-	"version": "0.0.1",
+	"private": false,
+	"version": "0.0.5",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
-		"build": "tsc && vite build",
-		"preview": "vite preview"
+		"watch:preflight": "sass --watch src/jelly-preflight.scss precompiled/jelly-preflight.css",
+		"watch:components": "sass --watch src/jelly-components.scss precompiled/jelly-components.css --load-path=node_modules",
+		"watch:utilities": "sass --watch src/jelly-utilities.scss precompiled/jelly-utilities.css --load-path=node_modules",
+		"build:preflight": "postcss precompiled/jelly-preflight.css --dir dist/css --ext .css",
+		"build:components": "postcss precompiled/jelly-components.css --dir dist/css --ext .css",
+		"build:utilities": "postcss precompiled/jelly-utilities.css --dir dist/css --ext .css",
+		"build:all": "pnpm run build:preflight && pnpm run build:components && pnpm run build:utilities"
 	},
 	"dependencies": {
 		"@jelly/tidal": "workspace:*",
 		"@jelly/tidal-wave": "workspace:*"
 	},
 	"devDependencies": {
+		"autoprefixer": "^10.4.16",
+		"cssnano": "^6.0.2",
+		"postcss": "^8.4.32",
+		"postcss-cli": "^11.0.0",
 		"postcss-prefix-selector": "^1.16.0",
-		"sass": "^1.69.5",
-		"typescript": "^5.2.2",
-		"vite": "^5.0.8"
+		"prettier": "^3.1.1",
+		"sass": "^1.69.6"
 	}
 }
