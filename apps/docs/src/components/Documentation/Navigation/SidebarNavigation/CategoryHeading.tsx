@@ -20,10 +20,6 @@ interface CategoryHeadingProps {
 const CategoryHeading = ({ title }: CategoryHeadingProps) => {
   const { openCategory, handleTypeChange, handleOpenCategory } = useSidebarStore();
 
-  const test = () => {
-    console.log("test");
-  };
-
   return (
     <button class="relative mb-4 flex w-full" onClick={() => handleOpenCategory(title)}>
       <div class={clsx(title === openCategory ? currentHeadingVariant({ currentStatus: "active" }) : currentHeadingVariant({ currentStatus: "inactive" }))}>
