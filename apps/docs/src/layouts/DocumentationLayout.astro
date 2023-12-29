@@ -31,9 +31,10 @@ const { title, headings } = Astro.props;
     <main class="mx-auto grid h-full max-w-8xl grid-cols-docs-sm lg:grid-cols-docs-md">
       <SidebarNavigation />
       <article class="px-14 py-12">
-        <div class="lg:prose-md prose max-w-none dark:prose-invert">
+        <div class="lg:prose-md prose max-w-none py-8 dark:prose-invert">
           <slot />
         </div>
+        <slot name="doc-footer" />
       </article>
       <WhatsOnThisPage headings={headings} client:only="preact" />
     </main>

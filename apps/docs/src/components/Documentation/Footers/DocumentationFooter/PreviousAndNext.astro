@@ -1,0 +1,39 @@
+---
+import { cva, type VariantProps } from "cva";
+import ChevronLeft from "astro-heroicons/mini/ChevronLeft.astro";
+
+const previousNextVariant = cva({
+  variants: {
+    intent: {
+      previous: "justify-start",
+      next: "justify-end",
+    },
+    arrow: {
+      left: "order-1",
+      right: "order-3 rotate-180",
+    },
+  },
+});
+
+interface Props {
+  text: "Previous" | "Next";
+  title: string;
+  url: string;
+  intent: VariantProps<typeof previousNextVariant>["intent"];
+}
+
+const { text, title, url, intent = "previous" } = Astro.props;
+---
+
+<a class="relative flex w-full *:rounded-md *:transition-all *:duration-200 *:ease-in-out" href={url}>
+  <div
+    class:list={[
+      previousNextVariant({ intent }),
+      "z-10 flex h-full w-full -translate-x-1 -translate-y-1 items-center gap-4 border-2 border-black bg-violet-500 px-4 py-4 font-semibold text-white hover:translate-x-0 hover:translate-y-0",
+    ]}
+  >
+    <span class="order-2">{title}</span>
+    <ChevronLeft class:list={[previousNextVariant({ intent, arrow: intent === "previous" ? "left" : "right" }), "h-5 w-5"]} />
+  </div>
+  <div class="absolute inset-0 bg-black"></div>
+</a>
