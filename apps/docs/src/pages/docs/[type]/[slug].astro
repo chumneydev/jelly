@@ -1,7 +1,10 @@
 ---
-import DocumentationLayout from "@layouts/DocumentationLayout.astro";
 import { getCollection, getEntry } from "astro:content";
 import { stripFolderFromSlug } from "~utils/stripFolderFromSlug";
+import { getPreviousAndNextDocs } from "~utils/contentCollections";
+
+import DocumentationFooter from "@components/Documentation/Footers/DocumentationFooter/DocumentationFooter.astro";
+import DocumentationLayout from "@layouts/DocumentationLayout.astro";
 
 export const getStaticPaths = async () => {
   const docs = await getCollection("docs");
@@ -25,8 +28,11 @@ export const getStaticPaths = async () => {
 const { doc } = Astro.props;
 const { Content, headings } = await doc.render();
 const category = await getEntry(doc.data.category);
+
+const { previousDoc, nextDoc } = await getPreviousAndNextDocs(doc.slug, category.data.type);
 ---
 
 <DocumentationLayout title={doc.data.title} headings={headings}>
   <Content />
+  <DocumentationFooter previousDoc={previousDoc} nextDoc={nextDoc} slot="doc-footer" />
 </DocumentationLayout>
