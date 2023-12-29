@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "cva": "1.0.0-beta.1",
-    "preact": "^10.19.3"
+    "preact": "^10.19.3",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.7.0",

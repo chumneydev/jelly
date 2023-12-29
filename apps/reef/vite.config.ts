@@ -14,6 +14,7 @@ export default defineConfig(({ command, mode }) => {
 				"@assets": path.resolve(__dirname, "./src/assets"),
 				"@components": path.resolve(__dirname, "./src/components"),
 				"@defaults": path.resolve(__dirname, "./src/defaults"),
+				"@stores": path.resolve(__dirname, "./src/stores"),
 				"@styles": path.resolve(__dirname, "./src/styles"),
 				"@context": path.resolve(__dirname, "./src/context"),
 				"~types": path.resolve(__dirname, "./src/types"),

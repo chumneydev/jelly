@@ -9,8 +9,8 @@
 		"paths": {
 			"@assets/*": ["src/assets/*"],
 			"@components/*": ["src/components/*"],
+			"@stores/*": ["src/stores/*"],
 			"@styles/*": ["src/styles/*"],
-			"@context/*": ["src/context/*"],
 			"~types/*": ["src/types/*"],
 			"~hooks/*": ["src/hooks/*"],
 			"~utils/*": ["src/utils/*"],
