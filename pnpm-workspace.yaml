@@ -1,5 +1,6 @@
 packages:
   - "apps/docs"
+  - "apps/reef"
   - "framework/jelly-ui"
   - "utilities/tidal"
   - "utilities/tidal-wave"
