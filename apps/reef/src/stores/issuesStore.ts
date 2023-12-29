@@ -3,16 +3,13 @@ import { Issue } from "~types/issues";
 
 interface IssueState {
 	issues: Issue[];
-	addIssue: (issue: Issue) => void;
+	addIssues: (issues: Issue[]) => void;
 	clearIssues: () => void;
 }
 
 const useIssuesStore = create<IssueState>((set) => ({
 	issues: [],
-	addIssue: (issue) =>
-		set((state) => ({
-			issues: [...state.issues, issue],
-		})),
+	addIssues: (newIssues: Issue[]) => set((state) => ({ issues: [...state.issues, ...newIssues] })),
 	clearIssues: () => set({ issues: [] }),
 }));
 
