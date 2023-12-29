@@ -8,11 +8,12 @@ import IssueTracker from "@components/Issues/IssueTracker";
 import useIssuesStore from "@stores/issuesStore";
 
 export function App() {
-	const { addIssues, clearIssues } = useIssuesStore();
+	const { addIssues, clearIssues, setIsLoading } = useIssuesStore();
 
 	// const issuesCount = issues.length;
 
 	useEffect(() => {
+		setIsLoading(true);
 		const reefContainer = document.getElementById("jelly");
 		clearIssues();
 		const newIssues = issuesToCheckFor
@@ -23,6 +24,7 @@ export function App() {
 			})
 			.filter((issue): issue is Issue => issue !== undefined);
 		addIssues(newIssues);
+		setIsLoading(false);
 	}, []);
 
 	return (
