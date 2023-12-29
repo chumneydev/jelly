@@ -3,6 +3,7 @@ import cssnano from "cssnano";
 import prefixer from "postcss-prefix-selector";
 
 export default {
+	map: false,
 	plugins: [
 		autoprefixer,
 		cssnano,
