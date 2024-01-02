@@ -5,10 +5,10 @@ import { BeakerIcon, ExclamationTriangleIcon } from "@heroicons/react/20/solid";
 import useIssuesStore from "@stores/issuesStore";
 
 const issueButtonVariant = cva({
-	base: "z-10 flex h-full w-full items-center justify-center  gap-2 border-2 border-black  py-2 transition-all duration-200 ease-in-out hover:translate-x-0 hover:translate-y-0",
+	base: "z-10 flex h-full w-full items-center justify-center  gap-2 border-2 border-black  py-2 transition-all duration-200 ease-in-out hover:translate-x-0 hover:translate-y-0 text-white",
 	variants: {
 		issue: {
-			true: "bg-orange-500",
+			true: "bg-rose-500",
 			false: "bg-emerald-500",
 		},
 		show: {
@@ -29,25 +29,31 @@ const IssueButton = ({}: IssueButtonProps) => {
 
 	const issuesCount = issues.length;
 
-	const currentButtonContent = () => {
-		if (isLoading) {
-			return "Loading...";
-		}
-		return issuesCount > 0 ? (
-			<>
-				<ExclamationTriangleIcon class="h-6 w-6" />
-				{issuesCount} Issues
-			</>
-		) : (
-			<>
-				<BeakerIcon class="h-6 w-6" /> No issues
-			</>
-		);
-	};
+	const LoadingContent = () => (
+		<>
+			<BeakerIcon class="h-6 w-6" />
+			Loading...
+		</>
+	);
+
+	const NoIssuesContent = () => (
+		<>
+			<BeakerIcon class="h-6 w-6" /> No issues
+		</>
+	);
+
+	const IssuesContent = () => (
+		<>
+			<ExclamationTriangleIcon class="h-6 w-6" />
+			{issuesCount} Issue{issuesCount > 1 && "s"}
+		</>
+	);
 
 	return (
 		<button class="relative order-2 flex w-40 *:rounded-md" onClick={() => setShowIssues(!showIssues)}>
-			<div class={clsx(issueButtonVariant({ issue: issuesCount > 0, show: showIssues, loading: isLoading }))}>{currentButtonContent()}</div>
+			<div class={clsx(issueButtonVariant({ issue: issuesCount > 0, show: showIssues, loading: isLoading }))}>
+				{isLoading ? <LoadingContent /> : issuesCount > 0 ? <IssuesContent /> : <NoIssuesContent />}
+			</div>
 			<div class="absolute inset-0 bg-black"></div>
 		</button>
 	);

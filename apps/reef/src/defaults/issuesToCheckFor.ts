@@ -1,3 +1,5 @@
+import { IssueKey } from "~types/issues";
+
 const checkContainer = (element: HTMLElement | null) => element === null;
 
 const checkPageType = () => {
@@ -34,6 +36,30 @@ const AllowedComponentTypes = {
 	Form: "form",
 };
 
+const formatAllowedTypes = (types: Record<string, string>) => {
+	return Object.values(types).join(", ");
+};
+
+const issueSolutions = {
+	container: {
+		message: "Add the correct div, #wndsck, for the main content.",
+		types: "",
+	},
+	page: {
+		message: "Add the correct page type. Please use one of the following:",
+		types: formatAllowedTypes(AllowedPageTypes),
+	},
+	componentType: {
+		message: "Add the correct component type. Please use one of the following:",
+		types: formatAllowedTypes(AllowedComponentTypes),
+	},
+};
+
+const formattedIssueSolution = (issue: IssueKey) => {
+	const solution = issueSolutions[issue];
+	return `${solution.message} ${solution.types}`;
+};
+
 export interface IssueToCheckFor {
 	check: (element: HTMLElement | null) => boolean;
 	trackingScope: string;
@@ -45,20 +71,20 @@ const issuesToCheckFor: IssueToCheckFor[] = [
 	{
 		check: checkContainer,
 		trackingScope: "container",
-		warning: "The page is missing the correct div with id 'wndsck'.",
-		solution: "Add the correct div, #wndsck, for the main content.",
+		warning: "The page is missing the correct div with id 'jelly'.",
+		solution: formattedIssueSolution("container"),
 	},
 	{
 		check: checkPageType,
 		trackingScope: "page",
 		warning: "This page has an invalid page type.",
-		solution: `Add the correct page type. Please use one of the following: <span class="font-bold">[${Object.keys(AllowedPageTypes).join(", ")}.]</span>.`,
+		solution: formattedIssueSolution("page"),
 	},
 	{
 		check: checkComponentType,
 		trackingScope: "componentType",
 		warning: "This page has an invalid page type.",
-		solution: `Add the correct page type. Please use one of the following: <span class="font-bold">[${Object.keys(AllowedComponentTypes).join(", ")}]</span>.`,
+		solution: formattedIssueSolution("componentType"),
 	},
 ];
 
