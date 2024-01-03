@@ -27,13 +27,13 @@ const checkComponentType = () => {
 };
 
 const AllowedPageTypes = {
-	Content: "content",
-	Vehicle: "vehicle",
+	content: "content",
+	vehicle: "vehicle",
 };
 
 const AllowedComponentTypes = {
-	Buttons: "buttons",
-	Form: "form",
+	buttons: "buttons",
+	form: "form",
 };
 
 const formatAllowedTypes = (types: Record<string, string>) => {
