@@ -71,6 +71,9 @@ importers:
       preact:
         specifier: ^10.19.3
         version: 10.19.3
+      tw-merge:
+        specifier: 0.0.1-alpha.3
+        version: 0.0.1-alpha.3
       zustand:
         specifier: ^4.4.7
         version: 4.4.7(react@18.2.0)
@@ -5232,6 +5235,10 @@ packages:
       safe-buffer: 5.2.1
     dev: false
     optional: true
+
+  /tw-merge@0.0.1-alpha.3:
+    resolution: {integrity: sha512-HvuKdaUWjJKFlUa/DKDGnicPXill0bUZnzoK/BoTWn0OkKLfIrMMn97VXW6fFdArA40FeBkitWjr7SJRuaDvCg==}
+    dev: false
 
   /type-fest@2.19.0:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
