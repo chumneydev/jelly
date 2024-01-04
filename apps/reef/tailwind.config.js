@@ -3,9 +3,8 @@ export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
-			transitionProperty: {
-				height: "height",
-				"max-h": "max-height",
+			width: {
+				100: "30rem",
 			},
 		},
 	},

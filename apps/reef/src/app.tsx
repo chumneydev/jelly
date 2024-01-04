@@ -1,35 +1,19 @@
 import { useEffect } from "preact/hooks";
 import "@styles/app.css";
-
-import { Issue } from "~types/issues";
-import issuesToCheckFor from "@defaults/issuesToCheckFor";
-
-import IssueTracker from "@components/Issues/IssueTracker";
-import useIssuesStore from "@stores/issuesStore";
+import useWarningStore from "@stores/warningStore";
+import WarningButton from "@components/Warnings/WarningButton";
+import ListDrawer from "@components/ListDrawer";
 
 export function App() {
-	const { addIssues, clearIssues, setIsLoading } = useIssuesStore();
-
-	// const issuesCount = issues.length;
-
+	const { checkWarnings } = useWarningStore();
 	useEffect(() => {
-		setIsLoading(true);
-		const reefContainer = document.getElementById("jelly");
-		clearIssues();
-		const newIssues = issuesToCheckFor
-			.map((issue) => {
-				if (issue.check(reefContainer)) {
-					return { title: issue.trackingScope, warning: issue.warning, solution: issue.solution };
-				}
-			})
-			.filter((issue): issue is Issue => issue !== undefined);
-		addIssues(newIssues);
-		setIsLoading(false);
+		checkWarnings();
 	}, []);
 
 	return (
-		<>
-			<IssueTracker />
-		</>
+		<div class="fixed bottom-10 right-10 flex flex-col-reverse items-end gap-4">
+			<WarningButton />
+			<ListDrawer />
+		</div>
 	);
 }

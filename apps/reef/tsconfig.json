@@ -7,14 +7,12 @@
 		"skipLibCheck": true,
 		"baseUrl": "./",
 		"paths": {
-			"@assets/*": ["src/assets/*"],
 			"@components/*": ["src/components/*"],
-			"@defaults/*": ["src/defaults/*"],
 			"@stores/*": ["src/stores/*"],
 			"@styles/*": ["src/styles/*"],
 			"~types/*": ["src/types/*"],
-			"~hooks/*": ["src/hooks/*"],
 			"~utils/*": ["src/utils/*"],
+			"~warnings/*": ["src/warnings/*"],
 			"react": ["./node_modules/preact/compat/"],
 			"react-dom": ["./node_modules/preact/compat/"]
 		},
