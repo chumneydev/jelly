@@ -7,9 +7,11 @@ interface WarningStore {
 	foundWarnings: Warning[];
 	hasCheckedWarnings: boolean;
 	isListOpen: boolean;
+	selectedWarning: Warning | null;
 	addWarning: (warning: Warning) => void;
 	checkWarnings: () => void;
 	toggleList: () => void;
+	selectWarning: (warning: Warning | null) => void;
 }
 
 const useWarningStore = create<WarningStore>((set) => ({
@@ -17,6 +19,7 @@ const useWarningStore = create<WarningStore>((set) => ({
 	foundWarnings: [],
 	hasCheckedWarnings: false,
 	isListOpen: false,
+	selectedWarning: null,
 	addWarning: (warning) => set((state) => ({ defaultWarnings: [...state.defaultWarnings, warning] })),
 	checkWarnings: () =>
 		set((state) => {
@@ -24,6 +27,7 @@ const useWarningStore = create<WarningStore>((set) => ({
 			return { foundWarnings, hasCheckedWarnings: true };
 		}),
 	toggleList: () => set((state) => ({ isListOpen: !state.isListOpen })),
+	selectWarning: (warning) => set(() => ({ selectedWarning: warning })),
 }));
 
 export default useWarningStore;
