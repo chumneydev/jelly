@@ -2,11 +2,11 @@ import { clsx } from "clsx";
 import { cva } from "cva";
 
 import useWarningStore from "@stores/warningStore";
-import WarningCount from "@components/WarningButton/WarningCount";
-import { NoIssues } from "@components/WarningButton/NoIssues";
+import WarningCount from "@components/Warnings/WarningButton/WarningCount";
+import { NoIssues } from "@components/Warnings/WarningButton/NoIssues";
 
 const warningButtonVariants = cva({
-	base: "z-10 flex h-full w-full items-center justify-center font-bold  gap-2 border-2 border-black  py-2 px-4 transition-all duration-200 ease-in-out hover:translate-x-0 hover:translate-y-0 text-white",
+	base: "z-10 flex h-full w-52 items-center justify-center font-semibold   gap-2 border-2 border-black  py-2 px-4 transition-all duration-200 ease-in-out hover:translate-x-0 hover:translate-y-0 text-white",
 	variants: {
 		warnings: {
 			true: "bg-rose-500",
