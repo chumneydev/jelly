@@ -1,4 +1,5 @@
 import { Warning } from "~types/warning";
+import { currentUtilites } from "@jelly/tidal/dist/classes/currentUtilites";
 
 const defaultWarnings: Warning[] = [
 	{
@@ -70,6 +71,24 @@ const defaultWarnings: Warning[] = [
 		},
 		message: "The data-jelly-components attribute is not valid",
 		solution: 'Set the data-jelly-components attribute to "form", "buttons", or "accordion".',
+	},
+	{
+		id: "invalid-class",
+		check: () => {
+			const jellyDiv = document.getElementById("jelly");
+			if (!jellyDiv) return false;
+			const elements = jellyDiv.getElementsByTagName("*");
+			for (const element of elements) {
+				const classes = element.className.split(" ");
+				for (const cls of classes) {
+					if (cls && !currentUtilites.includes(cls)) return cls;
+				}
+			}
+			return false;
+		},
+
+		message: (invalidClass) => `Class "${invalidClass}" does not exist in jelly`,
+		solution: "Remove the invalid class or add please report this issue to the jelly team.",
 	},
 ];
 export default defaultWarnings;
