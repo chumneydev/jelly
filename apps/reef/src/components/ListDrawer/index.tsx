@@ -6,11 +6,11 @@ import WarningList from "@components/ListDrawer/WarningList";
 import NoWarnings from "@components/ListDrawer/NoWarnings";
 
 const listDrawerVariants = cva({
-	base: "flex w-100 flex-col gap-4 overflow-hidden transition-max-h duration-500 ease-in-out",
+	base: "flex w-100 flex-col gap-4 transition-opacity duration-100 ease-in-out overflow-auto p-1",
 	variants: {
 		variant: {
-			open: "max-h-96 pl-1 pt-1",
-			closed: "max-h-0",
+			open: "opacity-100",
+			closed: "opacity-0",
 		},
 	},
 });

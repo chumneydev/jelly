@@ -6,10 +6,6 @@ export default {
 			width: {
 				100: "30rem",
 			},
-			transitionProperty: {
-				height: "height",
-				"max-h": "max-height",
-			},
 		},
 	},
 	plugins: [],

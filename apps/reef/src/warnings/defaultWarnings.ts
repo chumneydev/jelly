@@ -1,4 +1,4 @@
-import { Warning } from "~types/warningTypes";
+import { Warning } from "~types/warning";
 
 const defaultWarnings: Warning[] = [
 	{
