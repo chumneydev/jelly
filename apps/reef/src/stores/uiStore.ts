@@ -6,7 +6,7 @@ interface UIStore {
 }
 
 const useUIStore = create<UIStore>((set) => ({
-	isToolbarOpen: false,
+	isToolbarOpen: true,
 	toggleToolbar: () => set((state) => ({ isToolbarOpen: !state.isToolbarOpen })),
 }));
 

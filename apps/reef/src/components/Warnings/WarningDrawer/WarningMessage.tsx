@@ -5,6 +5,6 @@ interface WarningMessageProps {
 }
 
 const WarningMessage = ({ message }: WarningMessageProps) => {
-	return <div class="flex w-full items-center rounded-md border-2 border-black bg-rose-300 px-4 text-sm">{message}</div>;
+	return <div className="flex w-full items-center rounded-md border-2 border-black bg-rose-300 px-4 text-sm">{message}</div>;
 };
 export default WarningMessage;
