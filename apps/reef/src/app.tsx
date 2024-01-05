@@ -1,18 +1,20 @@
 import { useEffect } from "preact/hooks";
 import "@styles/app.css";
+
 import useWarningStore from "@stores/warningStore";
-import WarningButton from "@components/Warnings/WarningButton";
-import ListDrawer from "@components/ListDrawer";
+
 import Toolbar from "@components/Toolbar";
+import WarningDrawer from "@components/Warnings/WarningDrawer";
 
 export function App() {
-	const { checkWarnings } = useWarningStore();
+	const { checkWarnings, foundWarnings } = useWarningStore();
 	useEffect(() => {
 		checkWarnings();
 	}, []);
 
 	return (
 		<>
+			<WarningDrawer currentWarning={foundWarnings[0]} />
 			<Toolbar></Toolbar>
 		</>
 	);
