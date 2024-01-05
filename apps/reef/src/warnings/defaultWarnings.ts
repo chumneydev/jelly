@@ -1,5 +1,5 @@
 import { Warning } from "~types/warning";
-import { currentUtilites } from "@jelly/tidal/dist/classes/currentUtilites";
+import jellyUtilities from "@jelly/tidal/dist/classes/jellyUtilities";
 
 const defaultWarnings: Warning[] = [
 	{
@@ -81,7 +81,7 @@ const defaultWarnings: Warning[] = [
 			for (const element of elements) {
 				const classes = element.className.split(" ");
 				for (const cls of classes) {
-					if (cls && !currentUtilites.includes(cls)) return cls;
+					if (cls && !jellyUtilities.includes(cls)) return cls;
 				}
 			}
 			return false;
