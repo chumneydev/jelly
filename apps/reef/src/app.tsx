@@ -7,6 +7,7 @@ import Toolbar from "@components/Toolbar";
 import WarningDrawer from "@components/Warnings/WarningDrawer";
 import VisibilityButton from "@components/Toolbar/Buttons/VisibilityButton";
 import Divider from "@components/Common/Divider";
+import PeekingJelly from "@components/Common/PeekingJelly";
 
 export function App() {
 	const { checkWarnings, foundWarnings } = useWarningStore();
@@ -17,6 +18,7 @@ export function App() {
 	return (
 		<>
 			<WarningDrawer currentWarning={foundWarnings[0]} />
+			<PeekingJelly />
 			<Toolbar>
 				<Divider orientation="horizontal" flow="absolute" position="top" className="-top-1 bg-black" />
 				<div></div>
