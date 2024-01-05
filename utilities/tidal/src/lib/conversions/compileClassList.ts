@@ -49,10 +49,12 @@ const compileClassList = (guides: Guide[]) => {
 };
 
 const writeClassListToFile = async (classList: string[]) => {
-	const fileName = createFileName("currentUtilites", "ts", false, "");
+	const exportName = "jellyUtilities";
+
+	const fileName = createFileName(exportName, "ts", false, "");
 	const filePath = createFilePath(`classes`, "");
 
-	const classListString = `const currentUtilites = [\n${classList.map((className) => `  "${className}",`).join("\n")}\n];\n export default currentUtilites;`;
+	const classListString = `const ${exportName} = [\n${classList.map((className) => `  "${className}",`).join("\n")}\n];\n export default ${exportName};`;
 
 	if (!(await checkIfDirectoryExists(filePath))) {
 		await createDirectory(filePath);
