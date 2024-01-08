@@ -3,6 +3,7 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
 
 import useUIStore from "@stores/uiStore";
 import cn from "~utils/clsxTwMerge";
+import useWarningStore from "@stores/warningStore";
 
 interface VisibilityButtonProps {}
 
@@ -20,9 +21,16 @@ const visibilityButtonVariants = cva({
 });
 
 const VisibilityButton = ({}: VisibilityButtonProps) => {
-	const { isToolbarOpen, toggleToolbar } = useUIStore();
+	const { selectedWarning } = useWarningStore();
+	const { isToolbarOpen, toggleToolbar, isDrawerOpen, toggleDrawer } = useUIStore();
 
 	const handleToolbarToggle = () => {
+		if (isToolbarOpen && isDrawerOpen) {
+			toggleDrawer();
+		} else if (!isToolbarOpen && selectedWarning) {
+			toggleDrawer();
+		}
+
 		toggleToolbar();
 	};
 

@@ -9,25 +9,26 @@ import VisibilityButton from "@components/Toolbar/Buttons/VisibilityButton";
 import Divider from "@components/Common/Divider";
 import PeekingJelly from "@components/Common/PeekingJelly";
 import WarningInformation from "@components/Warnings/WarningInformation";
+import CurrentWarning from "@components/Toolbar/CurrentWarning";
 
 export function App() {
-	const { checkWarnings, foundWarnings } = useWarningStore();
+	const { checkWarnings, foundWarnings, selectedWarning } = useWarningStore();
 	useEffect(() => {
 		checkWarnings();
 	}, []);
 
 	return (
 		<>
-			<WarningDrawer currentWarning={foundWarnings[0]} />
+			<WarningDrawer currentWarning={selectedWarning} />
 			<PeekingJelly />
 			<Toolbar>
 				<Divider orientation="horizontal" flow="absolute" position="top" className="-top-1 bg-black" />
 				<div>
 					<WarningInformation />
 				</div>
-				<div className="flex justify-center gap-8 bg-violet-600 px-4">
+				<div className="flex justify-center gap-8">
 					{foundWarnings.map((warning) => (
-						<div>{warning.message}</div>
+						<CurrentWarning key={warning.id} warning={warning} />
 					))}
 				</div>
 				<div className="flex gap-4">

@@ -4,12 +4,14 @@ import jellyUtilities from "@jelly/tidal/dist/classes/jellyUtilities";
 const defaultWarnings: Warning[] = [
 	{
 		id: "no-jelly",
+		summary: "No jelly div found",
 		check: () => !document.getElementById("jelly"),
 		message: 'The user has not set a div id="jelly" in their html file',
 		solution: 'Add a div with id="jelly" to your HTML file.',
 	},
 	{
 		id: "jelly-unsupported-tag",
+		summary: "Unsupported HTML tags found in the jelly div",
 		check: () => {
 			const jellyDiv = document.getElementById("jelly");
 			if (!jellyDiv) return false;
@@ -24,6 +26,7 @@ const defaultWarnings: Warning[] = [
 	},
 	{
 		id: "jelly-content-missing",
+		summary: "The data-jelly-content attribute is missing",
 		check: () => {
 			// const jellyDiv = document.getElementById("jelly");
 			// return !jellyDiv || jellyDiv.getAttribute("data-jelly-content") === null;
@@ -35,6 +38,7 @@ const defaultWarnings: Warning[] = [
 	},
 	{
 		id: "jelly-content-empty",
+		summary: "The data-jelly-content attribute is empty",
 		check: () => {
 			const jellyDiv = document.getElementById("jelly");
 			return jellyDiv ? jellyDiv.getAttribute("data-jelly-content") === "" : false;
@@ -44,6 +48,7 @@ const defaultWarnings: Warning[] = [
 	},
 	{
 		id: "jelly-content-invalid",
+		summary: "The data-jelly-content attribute is not valid",
 		check: () => {
 			const jellyDiv = document.getElementById("jelly");
 			const content = jellyDiv ? jellyDiv.getAttribute("data-jelly-content") : "";
@@ -54,6 +59,7 @@ const defaultWarnings: Warning[] = [
 	},
 	{
 		id: "jelly-components-empty",
+		summary: "The data-jelly-components attribute is empty",
 		check: () => {
 			const jellyDiv = document.getElementById("jelly");
 			const components = jellyDiv ? jellyDiv.getAttribute("data-jelly-components") : null;
@@ -64,6 +70,7 @@ const defaultWarnings: Warning[] = [
 	},
 	{
 		id: "jelly-components-invalid",
+		summary: "The data-jelly-components attribute is not valid",
 		check: () => {
 			const jellyDiv = document.getElementById("jelly");
 			const components = jellyDiv ? jellyDiv.getAttribute("data-jelly-components") : "";
@@ -74,6 +81,7 @@ const defaultWarnings: Warning[] = [
 	},
 	{
 		id: "invalid-class",
+		summary: "Invalid class found in jelly",
 		check: () => {
 			const jellyDiv = document.getElementById("jelly");
 			if (!jellyDiv) return false;
