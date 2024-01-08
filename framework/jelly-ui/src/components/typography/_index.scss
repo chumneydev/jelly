@@ -1,0 +1,4 @@
+@use "@jelly/tidal-wave/dist/guides/scss/font-sizes" as waves_font_sizes;
+@use "../abstracts/mixins" as mixins;
+
+@include mixins.mixin-create-components(waves_font_sizes.$font-sizes);
