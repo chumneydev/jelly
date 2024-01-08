@@ -1,54 +1,73 @@
 import { VariantProps, cva } from "cva";
-import cn from "~utils/cn";
+import cn from "~utils/clsxTwMerge";
 
-const dividerVariants = cva({
-	base: "flex",
+const dividerVariations = cva({
+	base: "",
 	variants: {
-		height: {
-			sm: "h-0.5",
-			md: "h-1",
-			lg: "h-2",
-			full: "h-full",
-		},
-		width: {
-			sm: "w-0.5",
-			md: "w-1",
-			lg: "w-2",
-			full: "w-full",
-		},
-		color: {
-			black: "bg-black",
-			white: "bg-white",
-			rose: "bg-rose-600",
-			emerald: "bg-emerald-600",
-		},
 		orientation: {
 			horizontal: "flex",
 			vertical: "block",
+		},
+		flow: {
+			absolute: "absolute",
+			relative: "relative",
+		},
+		position: {
+			top: "top-0",
+			bottom: "bottom-0",
+			left: "left-0",
+			right: "right-0",
+			default: "",
 		},
 	},
 	compoundVariants: [
 		{
 			orientation: "horizontal",
-			width: "full",
-			class: "w-full",
+			flow: "relative",
+			position: "default",
+			class: "h-1 w-full",
 		},
 		{
 			orientation: "vertical",
-			height: "full",
-			className: "h-auto",
+			flow: "relative",
+			position: "default",
+			class: "w-1 h-auto",
+		},
+		{
+			orientation: "horizontal",
+			flow: "absolute",
+			position: "top",
+			class: "top-0 w-full h-1 bg-black",
+		},
+		{
+			orientation: "horizontal",
+			flow: "absolute",
+			position: "bottom",
+			class: "bottom-0",
+		},
+		{
+			orientation: "vertical",
+			flow: "absolute",
+			position: "left",
+			class: "left-0",
+		},
+		{
+			orientation: "vertical",
+			flow: "absolute",
+			position: "right",
+			class: "right-0",
 		},
 	],
 });
 
 interface DividerProps {
-	height: VariantProps<typeof dividerVariants>["height"];
-	width: VariantProps<typeof dividerVariants>["width"];
-	color: VariantProps<typeof dividerVariants>["color"];
-	orientation: VariantProps<typeof dividerVariants>["orientation"];
+	className?: string;
+	orientation: VariantProps<typeof dividerVariations>["orientation"];
+	flow: VariantProps<typeof dividerVariations>["flow"];
+	position: VariantProps<typeof dividerVariations>["position"];
 }
 
-const Divider = ({ height, width, color, orientation }: DividerProps) => {
-	return <div class={cn(dividerVariants({ height, width, color, orientation }))}></div>;
+const Divider = ({ orientation, flow, position, className }: DividerProps) => {
+	return <div class={cn(dividerVariations({ orientation, flow, position }), className)}></div>;
 };
 export default Divider;

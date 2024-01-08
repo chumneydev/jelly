@@ -1,6 +1,7 @@
 {
 	"printWidth": 180,
 	"plugins": ["prettier-plugin-tailwindcss"],
+	"tailwindFunctions": ["cva"],
 	"tabWidth": 2,
 	"useTabs": true
 }
