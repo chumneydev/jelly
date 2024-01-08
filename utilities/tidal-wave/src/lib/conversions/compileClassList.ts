@@ -1,56 +1,27 @@
 import chalk from "chalk";
+import camelCase from "~lib/utils/camelCase";
+import getColor from "~lib/utils/getColor";
+import getCurrentTime from "~lib/utils/getCurrentTime";
 
 import { checkIfDirectoryExists, createDirectory, createFileName, createFilePath, writeFile } from "~lib/utils/namesAndDirectoryHelper";
 
 import { ComponentGroup } from "~types/component";
 
-const getColor = (color: string) => {
-	switch (color) {
-		case "red":
-			return chalk.red;
-		case "green":
-			return chalk.green;
-		case "magenta":
-			return chalk.magenta;
-		case "yellow":
-			return chalk.yellow;
-		case "blue":
-			return chalk.blue;
-		default:
-			return chalk.white;
+const compileClassList = (group: ComponentGroup) => {
+	const classList: string[] = [];
+
+	for (const component of group.components) {
+		classList.push(component.className);
 	}
+
+	return classList;
 };
 
-const compileClassList = (components: ComponentGroup[]) => {
-	const breakpoints = ["sm", "md", "lg", "xl"];
-	const currentClassList: string[] = [];
-
-	// Add all base class names first
-	for (const group of components) {
-		for (const component of group.components) {
-			currentClassList.push(component.className);
-		}
-	}
-
-	// Then, add the breakpoint-prefixed classes for each breakpoint
-	for (const breakpoint of breakpoints) {
-		for (const group of components) {
-			for (const component of group.components) {
-				currentClassList.push(`${breakpoint}:${component.className}`);
-			}
-		}
-	}
-
-	return currentClassList;
-};
-
-const writeClassListToFile = async (classList: string[]) => {
-	const exportName = "jellyComponents";
-
-	const fileName = createFileName(exportName, "ts", false, "");
+const writeClassListToFile = async (classList: string[], componentName: string) => {
+	const fileName = createFileName(componentName, "ts", false, "");
 	const filePath = createFilePath("classes", "");
 
-	const classListString = `const ${exportName} = [\n${classList.map((className) => `  "${className}",`).join("\n")}\n];\n export default ${exportName};`;
+	const classListString = `const ${componentName} = [\n${classList.map((className) => `  "${className}",`).join("\n")}\n];\n export default ${componentName};`;
 
 	if (!(await checkIfDirectoryExists(filePath))) {
 		await createDirectory(filePath);
@@ -60,13 +31,18 @@ const writeClassListToFile = async (classList: string[]) => {
 };
 
 const createClassList = async (components: ComponentGroup[], color: string) => {
-	console.log(getColor(color)(`Creating class list...`));
+	const currentTimestamp = getCurrentTime();
 
-	const classList = compileClassList(components);
+	for (const group of components) {
+		const componentName = camelCase(group.name);
 
-	await writeClassListToFile(classList);
+		console.log(getColor(color)(`${currentTimestamp} Creating ${componentName}...`));
 
-	console.log(getColor(color)(`Finished creating class list!`));
+		const classList = compileClassList(group);
+		await writeClassListToFile(classList, componentName);
+	}
+
+	console.log(getColor(color)(`${currentTimestamp} Finished creating component class list!`));
 };
 
 export default createClassList;

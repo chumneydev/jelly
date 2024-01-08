@@ -1,9 +1,10 @@
 import { ComponentGroup } from "~types/component";
 
-import createClassList from "~lib/conversions/compileClassList";
 import convertComponents from "~lib/conversions/convertComponents";
 import transfromSass from "~lib/transforms/transformSass";
 import transformTypescript from "~lib/transforms/transformTypescript";
+import compileFullList from "~lib/conversions/compileFullList";
+import compileClassList from "~lib/conversions/compileClassList";
 
 const buildComponents = async (components: ComponentGroup[]) => {
 	const orderedComponentGroupNames: ComponentGroup["name"][] = ["Grid", "Font Sizes", "Buttons Simple"];
@@ -12,7 +13,8 @@ const buildComponents = async (components: ComponentGroup[]) => {
 
 	await convertComponents(components, transfromSass, "scss", "_", "yellow");
 	await convertComponents(components, transformTypescript, "ts", "", "magenta");
-	await createClassList(orderedComponents, "blue");
+	await compileFullList(orderedComponents, "blue");
+	await compileClassList(orderedComponents, "red");
 };
 
 export default buildComponents;

@@ -1,23 +1,8 @@
 import chalk from "chalk";
+import getColor from "~lib/utils/getColor";
+import getCurrentTime from "~lib/utils/getCurrentTime";
 import { checkIfDirectoryExists, createDirectory, createFileName, createFilePath, writeFile } from "~lib/utils/namesAndDirectoryHelper";
 import { ComponentGroup } from "~types/component";
-
-const getColor = (color: string) => {
-	switch (color) {
-		case "red":
-			return chalk.red;
-		case "green":
-			return chalk.green;
-		case "magenta":
-			return chalk.magenta;
-		case "yellow":
-			return chalk.yellow;
-		case "blue":
-			return chalk.blue;
-		default:
-			return chalk.white;
-	}
-};
 
 interface GuideDetails {
 	fileName: string;
@@ -37,26 +22,30 @@ const convertComponentGroup = (group: ComponentGroup, transformer: Function, ext
 };
 
 const writeGuideToFile = async ({ fileName, convertedGuide, comment, color, extension }: GuideDetails & { color: string; extension: string }) => {
+	const currentTimestamp = getCurrentTime();
+
 	const filePathDefault = createFilePath(`guides/${extension}`, "");
 
 	if (!(await checkIfDirectoryExists(filePathDefault))) {
 		await createDirectory(filePathDefault);
 	}
 
-	console.log(getColor(color)(`Writing ${fileName} to ${extension}...`));
+	console.log(getColor(color)(`${currentTimestamp} Writing ${fileName} to ${extension}...`));
 
 	writeFile(filePathDefault, fileName, `${comment}\n\n${convertedGuide}`);
 };
 
 const convertComponents = async (componentGroups: ComponentGroup[], transformer: Function, extension: string, prefix: string, color: string) => {
-	console.log(getColor(color)(`Converting guides to ${extension}...`));
+	const currentTimestamp = getCurrentTime();
+
+	console.log(getColor(color)(`${currentTimestamp} Converting guides to ${extension}...`));
 
 	for (const group of componentGroups) {
 		const convertedGuide = convertComponentGroup(group, transformer, extension, prefix, color);
 		await writeGuideToFile(convertedGuide);
 	}
 
-	console.log(getColor(color)(`Finished converting guides to ${extension}!`));
+	console.log(getColor(color)(`${currentTimestamp} Finished converting guides to ${extension}!`));
 };
 
 export default convertComponents;
