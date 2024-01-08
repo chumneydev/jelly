@@ -8,6 +8,7 @@ import WarningDrawer from "@components/Warnings/WarningDrawer";
 import VisibilityButton from "@components/Toolbar/Buttons/VisibilityButton";
 import Divider from "@components/Common/Divider";
 import PeekingJelly from "@components/Common/PeekingJelly";
+import WarningInformation from "@components/Warnings/WarningInformation";
 
 export function App() {
 	const { checkWarnings, foundWarnings } = useWarningStore();
@@ -21,8 +22,10 @@ export function App() {
 			<PeekingJelly />
 			<Toolbar>
 				<Divider orientation="horizontal" flow="absolute" position="top" className="-top-1 bg-black" />
-				<div></div>
 				<div>
+					<WarningInformation />
+				</div>
+				<div className="flex justify-center gap-8 bg-violet-600 px-4">
 					{foundWarnings.map((warning) => (
 						<div>{warning.message}</div>
 					))}
