@@ -18,7 +18,6 @@ const guideBorder: Guide = {
 		...createVariantFromDictionary(borderWidthRight),
 		...createVariantFromDictionary(borderWidthBottom),
 		...createVariantFromDictionary(borderWidthLeft),
-		...createVariantFromDictionary(borderWidthRight),
 		...createVariantFromDictionary(borderRadius),
 		...createVariantFromDictionary(borderRadiusTop),
 		...createVariantFromDictionary(borderRadiusRight),

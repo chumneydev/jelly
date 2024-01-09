@@ -7,7 +7,7 @@ import compileFullList from "~lib/conversions/compileFullList";
 import compileClassList from "~lib/conversions/compileClassList";
 
 const buildComponents = async (components: ComponentGroup[]) => {
-	const orderedComponentGroupNames: ComponentGroup["name"][] = ["Grid", "Font Sizes", "Buttons Simple"];
+	const orderedComponentGroupNames: ComponentGroup["name"][] = ["Grid", "Font Sizes", "Buttons Simple", "Forms"];
 
 	const orderedComponents = orderedComponentGroupNames.map((name) => components.find((group) => group.name === name)).filter((group) => group !== undefined) as ComponentGroup[];
 
